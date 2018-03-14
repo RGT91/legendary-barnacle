@@ -2,7 +2,14 @@ package lexico;
 
 import java.util.Stack;
 
-public class String checkStack(Stack st, int cont){
+%%
+%class Flexer
+%public
+%standalone
+%line
+%unicode
+%{
+public String checkStack(Stack st, int cont){
   if (cont>st.peek()){
     st.push(cont);
     tokens += "INDENT";
@@ -18,13 +25,7 @@ public class String checkStack(Stack st, int cont){
   }
   return tokens;
 }
-
-%%
-%class Flexer
-%public
-%standalone
-%line
-%unicode
+%}
 
 %{
   protected int levels;
