@@ -10,14 +10,14 @@ import java.util.Stack;
 %unicode
 %{
 public String checkStack(Stack st, int cont){
-  if (cont>st.peek()){
+  if (cont>(int)st.peek()){
     st.push(cont);
     tokens += "INDENT";
-  }else if (cont<st.peek()){
-    while(cont<st.peek()&&st.peek()!=0){
+  }else if (cont<(int)st.peek()){
+    while(cont<(int)st.peek()&&(int)st.peek()!=0){
       st.pop();
     }
-    if(st.peek()==0){
+    if((int)st.peek()==0){
       return "error";
     }
     tokens+="DEINDENT";
