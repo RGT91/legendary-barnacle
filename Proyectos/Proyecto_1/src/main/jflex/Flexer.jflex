@@ -1,7 +1,8 @@
 package lexico;
 
 import java.util.Stack;
-public String checkStack(Stack st, int cont){
+
+public class String checkStack(Stack st, int cont){
   if (cont>st.peek()){
     st.push(cont); 
     tokens += "INDENT";
