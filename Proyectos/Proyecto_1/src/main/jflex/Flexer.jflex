@@ -4,10 +4,10 @@ import java.util.Stack;
 
 public class String checkStack(Stack st, int cont){
   if (cont>st.peek()){
-    st.push(cont); 
+    st.push(cont);
     tokens += "INDENT";
-  }else if (cont<st.peek){
-    while(cont>=st.peek&&st.peek!=0){
+  }else if (cont<st.peek()){
+    while(cont>=st.peek()&&st.peek()!=0){
       if(st.peek()==0){
         return "error";
        }else{
@@ -15,7 +15,7 @@ public class String checkStack(Stack st, int cont){
        }
      }
      tokens+="DEINDENT";
-  }else{
+    }else{
   }
   return tokens;
 }
