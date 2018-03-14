@@ -7,15 +7,14 @@ public class String checkStack(Stack st, int cont){
     st.push(cont);
     tokens += "INDENT";
   }else if (cont<st.peek()){
-    while(cont>=st.peek()&&st.peek()!=0){
-      if(st.peek()==0){
-        return "error";
-       }else{
-        st.pop();
-       }
-     }
-     tokens+="DEINDENT";
-    }else{
+    while(cont<st.peek()&&st.peek()!=0){
+      st.pop();
+    }
+    if(st.peek()==0){
+      return "error";
+    }
+    tokens+="DEINDENT";
+  }else{
   }
   return tokens;
 }
