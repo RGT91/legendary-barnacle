@@ -12,16 +12,16 @@ import java.util.Stack;
 public String checkStack(Stack st, int cont){
   if (cont>(int)st.peek()){
     st.push(cont);
-    tokens = "INDENT("+cont+")";
+    tokens += "INDENT("+cont+")";
   }else if (cont<(int)st.peek()){
     while(cont<(int)st.peek()&&(int)st.peek()!=0){
-      st.pop();
+      tokens+="DEINDENT("+st.pop()+")\n";
     }
     if((int)st.peek()==0&&cont!=0){
       System.out.println("Error de identación"); 
       System.exit(0);
     }
-    tokens="DEINDENT("+cont+")\n";
+    
   }else{
   }
   return tokens;
