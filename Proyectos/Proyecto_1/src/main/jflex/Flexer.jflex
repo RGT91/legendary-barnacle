@@ -18,7 +18,8 @@ public String checkStack(Stack st, int cont){
       st.pop();
     }
     if((int)st.peek()==0&&cont!=0){
-      return "error";
+      System.out.println("Error de identación"); 
+      System.exit(0);
     }
     tokens="DEINDENT";
   }else{
