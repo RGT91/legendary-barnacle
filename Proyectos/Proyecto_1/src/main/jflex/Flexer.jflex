@@ -12,7 +12,7 @@ import java.util.Stack;
 public String checkStack(Stack st, int cont){
   if (cont>(int)st.peek()){
     st.push(cont);
-    tokens += "INDENT";
+    tokens += "INDENT(cont)";
   }else if (cont<(int)st.peek()){
     while(cont<(int)st.peek()&&(int)st.peek()!=0){
       st.pop();
@@ -70,7 +70,7 @@ IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
 <YYINITIAL> {
   [ \t\f]         { if(yyline==0){ tokens += "Error de indentación. Línea 1.\n"; return 0; } }
   {SALTO}     { tokens = "SALTO\n"; yybegin(INDENT); cont=0; System.out.println(tokens);}
-  {STRING}      { tokens = "STRING("+yytext() + ") "; System.out.print(tokens);System.out.println(tokens);}
+  {STRING}      { tokens = "STRING("+yytext() + ") "; System.out.println(tokens);}
   {OPERADOR}      { tokens = "OPERADOR("+yytext() + ") "; System.out.println(tokens);}
   {SEPARADOR}      { tokens = "SEPARADOR("+yytext() + ") "; System.out.println(tokens);}
   {BOOLEANO}      { tokens = "BOOLEANO("+yytext() + ") "; System.out.println(tokens);}
