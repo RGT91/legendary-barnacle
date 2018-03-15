@@ -15,13 +15,13 @@ public String checkStack(Stack st, int cont){
     tokens += "INDENT("+cont+")";
   }else if (cont<(int)st.peek()){
     while(cont<(int)st.peek()&&(int)st.peek()!=0){
-      tokens+="DEINDENT("+st.pop()+")\n";
+      st.pop();
     }
     if((int)st.peek()==0&&cont!=0){
       tokens+="\nError de identación"; 
       System.exit(0);
     }
-    
+    tokens+="DEINDENT("+cont+")\n";
   }else{
   }
   return tokens;
@@ -84,7 +84,7 @@ IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
 <INDENT> {
   {SALTO}     { }
   [ ]         {  cont++;}
-  [\t\f]         {  cont+=11;}
+  [\t\f]         {  cont+=4;}
   {STRING}      { tokens+=checkStack(st,cont); tokens += "STRING("+yytext() + ") ";  yybegin(YYINITIAL);}
   {OPERADOR}      { tokens+=checkStack(st,cont); tokens += "OPERADOR("+yytext() + ") "; yybegin(YYINITIAL);}
   {SEPARADOR}      { tokens+=checkStack(st,cont);  tokens += "SEPARADOR("+yytext() + ") "; yybegin(YYINITIAL);}
