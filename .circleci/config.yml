@@ -44,7 +44,7 @@ jobs:
           working_directory: Proyectos/Proyecto_1
           command: mvn exec:java -Dexec.mainClass="lexico.Test"
       - run:
-          working_directory: Practicas/Proyecto_1
+          working_directory: Proyectos/Proyecto_1
           command: mvn exec:java -Dexec.mainClass="lexico.Test" < resources/fizzbuzz.py
 
 workflows:
