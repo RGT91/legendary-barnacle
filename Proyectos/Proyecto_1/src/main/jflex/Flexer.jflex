@@ -64,6 +64,7 @@ FLOTANTE        = {DECIMAL} "." {DECIMAL} {EXPONENTE}? | {DECIMAL} {EXPONENTE}?
 EXPONENTE       = ("e" | "E") ("+" | "-")? {DECIMAL}
 RESERVADA       = "if" | "else" | "elif" | "print" | "while" | "for" | "not" | "and" | "or"
 IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
+EOF             = <<EOF>>
 
 %state INDENT
 
@@ -79,6 +80,7 @@ IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
   {FLOTANTE}      { tokens += "FLOTANTE("+yytext() + ") "; }
   {RESERVADA}      { tokens += "RESERVADA("+yytext() + ") "; }
   {IDENTIFICADOR}      { tokens += "IDENTIFICADOR("+yytext() + ") "; }
+  {EOF}           {while ((int)st.peek()!=0){tokens+="\nDEINDENT("+(int)st.pop()+")";}
 }
 
 <INDENT> {
