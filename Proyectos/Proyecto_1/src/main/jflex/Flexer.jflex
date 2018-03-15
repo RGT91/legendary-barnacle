@@ -68,7 +68,7 @@ IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
 
 %%
 <YYINITIAL> {
-  [ \t\f]         { if(yyline==0){ tokens += "Error de indentación. Línea 1.\n"; return 0; } }
+  [ \t\f]         { if(yyline==0){ tokens = "Error de indentación. Línea 1.\n"; return 0; } }
   {SALTO}     { tokens = "SALTO\n"; yybegin(INDENT); cont=0; System.out.println(tokens);}
   {STRING}      { tokens = "STRING("+yytext() + ") "; System.out.println(tokens);}
   {OPERADOR}      { tokens = "OPERADOR("+yytext() + ") "; System.out.println(tokens);}
@@ -93,4 +93,4 @@ IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
   {RESERVADA}      { tokens=checkStack(st,cont); System.out.println(tokens); tokens = "RESERVADA("+yytext() + ") ";yybegin(YYINITIAL); System.out.println(tokens);}
   {IDENTIFICADOR}      { tokens=checkStack(st,cont); System.out.println(tokens); tokens = "IDENTIFICADOR("+yytext() + ") "; yybegin(YYINITIAL);System.out.println(tokens);}
 }
-.             { tokens += "Caracter ilegal <"+yytext()+">. En la linea "+ (yyline+1)+ ".\n"; return 0; }
+.             { tokens = "Caracter ilegal <"+yytext()+">. En la linea "+ (yyline+1)+ ".\n"; return 0; }
