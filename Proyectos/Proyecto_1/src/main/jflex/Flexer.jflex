@@ -10,7 +10,7 @@ import java.util.Stack;
 %unicode
 %{
 public String checkStack(Stack st, int cont){
-  println("Inicio: "+st.peek());
+  System.out.println("Inicio: "+st.peek());
   if (cont>(int)st.peek()){
     st.push(cont);
     tokens += "INDENT("+cont+")";
