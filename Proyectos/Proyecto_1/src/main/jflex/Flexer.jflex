@@ -32,7 +32,7 @@ public String checkStack(Stack st, int cont){
   protected int levels_aux;
   public String tokens;
   public int cont;
-  public Stack st = new Stack();
+  public Stack st;
 %}
 
 %init{
@@ -40,6 +40,7 @@ public String checkStack(Stack st, int cont){
   levels_aux = 0;
   tokens = "";
   cont=0;
+  st = new Stack();
   st.push(0);
 %init}
 
