@@ -12,7 +12,7 @@ import java.util.Stack;
 public String checkStack(Stack st, int cont){
   if (cont>(int)st.peek()){
     st.push(cont);
-    tokens += "INDENT("+cont+")";
+    tokens = "INDENT";
   }else if (cont<(int)st.peek()){
     while(cont<(int)st.peek()&&(int)st.peek()!=0){
       st.pop();
@@ -20,7 +20,7 @@ public String checkStack(Stack st, int cont){
     if((int)st.peek()==0&&cont!=0){
       return "error";
     }
-    tokens+="DEINDENT";
+    tokens="DEINDENT";
   }else{
   }
   return tokens;
