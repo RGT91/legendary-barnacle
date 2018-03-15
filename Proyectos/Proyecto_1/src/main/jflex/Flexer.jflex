@@ -21,7 +21,7 @@ public String checkStack(Stack st, int cont){
       System.out.println("Error de identación"); 
       System.exit(0);
     }
-    tokens="DEINDENT("+cont+")";
+    tokens="DEINDENT("+cont+")\n";
   }else{
   }
   return tokens;
@@ -85,13 +85,13 @@ IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
   {SALTO}     { }
   [ ]         {  cont++;}
   [\t\f]         {  cont+=11;}
-  {STRING}      { tokens=checkStack(st,cont); System.out.println(tokens); tokens = "STRING("+yytext() + ") ";  yybegin(YYINITIAL);System.out.print(tokens);}
-  {OPERADOR}      { tokens=checkStack(st,cont); System.out.println(tokens); tokens = "OPERADOR("+yytext() + ") "; yybegin(YYINITIAL);System.out.print(tokens);}
-  {SEPARADOR}      { tokens=checkStack(st,cont); System.out.println(tokens); tokens = "SEPARADOR("+yytext() + ") "; yybegin(YYINITIAL);System.out.print(tokens);}
-  {BOOLEANO}      { tokens=checkStack(st,cont); System.out.println(tokens); tokens = "BOOLEANO("+yytext() + ") ";yybegin(YYINITIAL); System.out.print(tokens);}
-  {ENTERO}      { tokens=checkStack(st,cont); System.out.println(tokens); tokens = "ENTERO("+yytext() + ") ";yybegin(YYINITIAL); System.out.print(tokens);}
-  {FLOTANTE}      { tokens=checkStack(st,cont); System.out.println(tokens); tokens = "FLOTANTE("+yytext() + ") ";yybegin(YYINITIAL); System.out.print(tokens);}
-  {RESERVADA}      { tokens=checkStack(st,cont); System.out.println(tokens); tokens = "RESERVADA("+yytext() + ") ";yybegin(YYINITIAL); System.out.print(tokens);}
-  {IDENTIFICADOR}      { tokens=checkStack(st,cont); System.out.println(tokens); tokens = "IDENTIFICADOR("+yytext() + ") "; yybegin(YYINITIAL);System.out.print(tokens);}
+  {STRING}      { tokens=checkStack(st,cont); System.out.print(tokens); tokens = "STRING("+yytext() + ") ";  yybegin(YYINITIAL);System.out.print(tokens);}
+  {OPERADOR}      { tokens=checkStack(st,cont); System.out.print(tokens); tokens = "OPERADOR("+yytext() + ") "; yybegin(YYINITIAL);System.out.print(tokens);}
+  {SEPARADOR}      { tokens=checkStack(st,cont); System.out.print(tokens); tokens = "SEPARADOR("+yytext() + ") "; yybegin(YYINITIAL);System.out.print(tokens);}
+  {BOOLEANO}      { tokens=checkStack(st,cont); System.out.print(tokens); tokens = "BOOLEANO("+yytext() + ") ";yybegin(YYINITIAL); System.out.print(tokens);}
+  {ENTERO}      { tokens=checkStack(st,cont); System.out.print(tokens); tokens = "ENTERO("+yytext() + ") ";yybegin(YYINITIAL); System.out.print(tokens);}
+  {FLOTANTE}      { tokens=checkStack(st,cont); System.out.print(tokens); tokens = "FLOTANTE("+yytext() + ") ";yybegin(YYINITIAL); System.out.print(tokens);}
+  {RESERVADA}      { tokens=checkStack(st,cont); System.out.print(tokens); tokens = "RESERVADA("+yytext() + ") ";yybegin(YYINITIAL); System.out.print(tokens);}
+  {IDENTIFICADOR}      { tokens=checkStack(st,cont); System.out.print(tokens); tokens = "IDENTIFICADOR("+yytext() + ") "; yybegin(YYINITIAL);System.out.print(tokens);}
 }
 .             { tokens = "Caracter ilegal <"+yytext()+">. En la linea "+ (yyline+1)+ ".\n"; return 0; }
