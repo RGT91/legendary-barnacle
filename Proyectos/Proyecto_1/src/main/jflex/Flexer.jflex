@@ -21,7 +21,7 @@ public String checkStack(Stack st, int cont){
       System.out.println("Error de identación"); 
       System.exit(0);
     }
-    tokens="DEINDENT("+cont")";
+    tokens="DEINDENT("+cont+")";
   }else{
   }
   return tokens;
