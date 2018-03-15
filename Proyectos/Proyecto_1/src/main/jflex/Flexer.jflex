@@ -79,7 +79,7 @@ IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
   {FLOTANTE}      { tokens += "FLOTANTE("+yytext() + ") "; }
   {RESERVADA}      { tokens += "RESERVADA("+yytext() + ") "; }
   {IDENTIFICADOR}      { tokens += "IDENTIFICADOR("+yytext() + ") "; }
-  <<EOF>>           {while ((int)st.peek()!=0){tokens+="\nDEINDENT("+(int)st.pop()+")";}
+  <<EOF>>           {while ((int)st.peek()!=0){tokens+="\nDEINDENT("+(int)st.pop()+")";}}
 }
 
 <INDENT> {
