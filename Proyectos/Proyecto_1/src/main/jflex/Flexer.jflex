@@ -69,7 +69,7 @@ IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
 
 %%
 <YYINITIAL> {
-  [ \t\f]         { if(yyline==0){ tokens = "Error de indentación. Línea 1.\n"; return 0; } };
+  [ \t\f]         { if(yyline==0){ tokens = "Error de indentación. Línea 1.\n"; return 0; } }
   {SALTO}     { tokens = "SALTO\n"; yybegin(INDENT); cont=0; System.out.print(tokens);}
   {STRING}      { tokens = "STRING("+yytext() + ") "; System.out.print(tokens);}
   {OPERADOR}      { tokens = "OPERADOR("+yytext() + ") "; System.out.print(tokens);}
