@@ -86,13 +86,13 @@ IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
   {SALTO}     { }
   [ ]         {  cont++;}
   [\t\f]         {  cont+=4;}
-  {STRING}      { tokens+=checkStack(st,cont); tokens += "STRING("+yytext() + ") ";  yybegin(YYINITIAL);}
-  {OPERADOR}      { tokens+=checkStack(st,cont); tokens += "OPERADOR("+yytext() + ") "; yybegin(YYINITIAL);}
-  {SEPARADOR}      { tokens+=checkStack(st,cont);  tokens += "SEPARADOR("+yytext() + ") "; yybegin(YYINITIAL);}
-  {BOOLEANO}      { tokens+=checkStack(st,cont);  tokens += "BOOLEANO("+yytext() + ") ";yybegin(YYINITIAL); }
-  {ENTERO}      { tokens+=checkStack(st,cont);  tokens += "ENTERO("+yytext() + ") ";yybegin(YYINITIAL); }
-  {FLOTANTE}      { tokens+=checkStack(st,cont);  tokens += "FLOTANTE("+yytext() + ") ";yybegin(YYINITIAL); }
-  {RESERVADA}      { tokens+=checkStack(st,cont);  tokens += "RESERVADA("+yytext() + ") ";yybegin(YYINITIAL); }
-  {IDENTIFICADOR}      { tokens+=checkStack(st,cont);  tokens += "IDENTIFICADOR("+yytext() + ") "; yybegin(YYINITIAL);}
+  {STRING}      { checkStack(st,cont); tokens += "STRING("+yytext() + ") ";  yybegin(YYINITIAL);}
+  {OPERADOR}      { checkStack(st,cont); tokens += "OPERADOR("+yytext() + ") "; yybegin(YYINITIAL);}
+  {SEPARADOR}      { checkStack(st,cont);  tokens += "SEPARADOR("+yytext() + ") "; yybegin(YYINITIAL);}
+  {BOOLEANO}      { checkStack(st,cont);  tokens += "BOOLEANO("+yytext() + ") ";yybegin(YYINITIAL); }
+  {ENTERO}      { checkStack(st,cont);  tokens += "ENTERO("+yytext() + ") ";yybegin(YYINITIAL); }
+  {FLOTANTE}      { checkStack(st,cont);  tokens += "FLOTANTE("+yytext() + ") ";yybegin(YYINITIAL); }
+  {RESERVADA}      { checkStack(st,cont);  tokens += "RESERVADA("+yytext() + ") ";yybegin(YYINITIAL); }
+  {IDENTIFICADOR}      { checkStack(st,cont);  tokens += "IDENTIFICADOR("+yytext() + ") "; yybegin(YYINITIAL);}
 }
 .             { tokens += "Caracter ilegal <"+yytext()+">. En la linea "+ (yyline+1)+ ".\n"; return 0; }
