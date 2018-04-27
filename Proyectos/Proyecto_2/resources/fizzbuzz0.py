@@ -1,1 +1,1 @@
-!indice and otro
+!indice or otro and algo
