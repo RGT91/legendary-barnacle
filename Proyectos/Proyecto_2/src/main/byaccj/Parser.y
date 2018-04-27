@@ -3,7 +3,7 @@
   import java.io.*;
 %}
 /* Átomos del lenguaje */
-%token DEINDENTA INDENTA OTRO IDENTIFICADOR ENTERO CADENA REAL BOOLEANO POWER SIGNUM OPERADOR
+%token DEINDENTA INDENTA OTRO IDENTIFICADOR ENTERO CADENA REAL BOOLEANO POWER SIGNUM OPERADOR COMPARADOR
 
 /* Producciones */
 %%
@@ -15,9 +15,18 @@ indenta : stmt
         | stmt INDENTA indenta DEINDENTA indenta
 ;
 /* stmt: OTRO+ */
-stmt: term
-    | stmt term
+stmt: comparison
+    | stmt comparison
 ;
+// comparison: expr (comp_op expr)*
+// comp_op: '<'|'>'|'=='|'>='|'<='|'!='
+comparison: expr                   { System.out.println("[OK]");}
+  | expr COMPARADOR comparison                   { System.out.println("[OK]");}
+  ;
+//expr: term (('+'|'-') term)*
+expr: term                   { System.out.println("[OK]");}
+  | term SIGNUM expr                   { System.out.println("[OK]");}
+  ;
 // term: factor (('*'|'/'|'%'|'//') factor)*
 term: factor                   { System.out.println("[OK]");}
   | factor OPERADOR term                   { System.out.println("[OK]");}

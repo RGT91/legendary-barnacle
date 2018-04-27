@@ -73,6 +73,7 @@ SALTO           =       (\r|\n|\r\n)+
 BOOLEANO        = "True" | "False"
 SIGNUM          = "+" | "-"
 OPERADOR        = "*" | "/" | "%" | "//"
+COMPARADOR      = "<" | ">" | "==" | ">=" | "<=" | "!="
 POWER           = "**"
 ASCIIDIGIT      = [0-9]
 DIGIT           = {ASCIIDIGIT}
@@ -103,6 +104,7 @@ EXPONENTE       = ("e" | "E") {SIGNUM}? {DECIMAL}
   {SALTO}				  { yybegin(INDENTA); actual=0;}
   {POWER}      {  return Parser.POWER; }
   {OPERADOR}      {  return Parser.OPERADOR; }
+  {COMPARADOR}      {  return Parser.COMPARADOR; }
   {BOOLEANO}      {  return Parser.BOOLEANO; }
   {ENTERO}      { return Parser.ENTERO; }
   {REAL}      { return Parser.REAL; }
