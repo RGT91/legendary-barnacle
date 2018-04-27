@@ -71,6 +71,7 @@ import java.util.Stack;
 %}
 SALTO           =       (\r|\n|\r\n)+
 BOOLEANO        = "True" | "False"
+AND             = "and"
 NOT             = "not" | "!"
 SIGNUM          = "+" | "-"
 OPERADOR        = "*" | "/" | "%" | "//"
@@ -107,6 +108,7 @@ COMENTARIO 		=     	"#".*{SALTO}
 <CODIGO>{
   {SALTO}				  { yybegin(INDENTA); actual=0;}
   {POWER}      {  return Parser.POWER; }
+  {AND}      {  return Parser.AND; }
   {NOT}      {  return Parser.NOT; }
   {SIGNUM}      {  return Parser.SIGNUM; }
   {OPERADOR}      {  return Parser.OPERADOR; }
