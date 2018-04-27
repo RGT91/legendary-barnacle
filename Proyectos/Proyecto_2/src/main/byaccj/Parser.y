@@ -7,13 +7,10 @@
 
 /* Producciones */
 %%
-input: { System.out.println("Reconocimiento Exitoso");}
-     | stmt { System.out.println("Reconocimiento Exitoso");}
+input:  { System.out.println("Reconocimiento Exitoso");}
      | indenta { System.out.println("Reconocimiento Exitoso");}
 ;
 indenta : stmt
-        | stmt INDENTA stmt DEINDENTA indenta
-        | stmt INDENTA stmt DEINDENTA
         | stmt INDENTA indenta DEINDENTA
         | stmt INDENTA indenta DEINDENTA indenta
 ;

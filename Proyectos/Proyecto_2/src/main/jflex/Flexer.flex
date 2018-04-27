@@ -94,10 +94,8 @@ SALTO                   =       "\n"
   \t					  { actual += 4;}
   .					  { yypushback(1);
 					    this.indentacion(actual);
-              System.out.println(indents);
 					    if(indents == 1){
 					      indents = 0;
-                System.out.println("return identa");
 					      return Parser.INDENTA;
 					    }
 					  }
