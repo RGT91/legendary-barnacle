@@ -4,17 +4,23 @@
 %}
 /* Átomos del lenguaje */
 %token DEINDENTA INDENTA OTRO IDENTIFICADOR ENTERO CADENA REAL BOOLEANO POWER
-%token SIGNUM OPERADOR COMPARADOR NOT AND OR LEFTPAR RIGTHPAR
+%token SIGNUM OPERADOR COMPARADOR NOT AND OR LEFTPAR RIGTHPAR SALTO
 
 /* Producciones */
 %%
 input:  { System.out.println("Reconocimiento Exitoso");}
      | indenta { System.out.println("Reconocimiento Exitoso");}
 ;
-indenta : stmt
-        | stmt INDENTA indenta DEINDENTA
-        | stmt INDENTA indenta DEINDENTA indenta
+indenta : file_input
+        | file_input INDENTA indenta DEINDENTA
+        | file_input INDENTA indenta DEINDENTA indenta
 ;
+// file_input: (SALTO | stmt)*
+file_input: SALTO                   { System.out.println("[OK]");}
+  | stmt                   { System.out.println("[OK]");}
+  | SALTO file_input                { System.out.println("[OK]");}
+  | stmt file_input                   { System.out.println("[OK]");}
+  ;
 /* stmt: OTRO+ */
 stmt: test
     | stmt test

@@ -109,7 +109,7 @@ COMENTARIO 		=     	"#".*{SALTO}
 					    yybegin(CODIGO);}
 }
 <CODIGO>{
-  {SALTO}				  { yybegin(INDENTA); actual=0;}
+  {SALTO}				  { yybegin(INDENTA); actual=0; return Parser.SALTO;}
   {POWER}      {  return Parser.POWER; }
   {LEFTPAR}      {  return Parser.LEFTPAR; }
   {RIGTHPAR}      {  return Parser.RIGTHPAR; }
@@ -125,7 +125,6 @@ COMENTARIO 		=     	"#".*{SALTO}
   {IDENTIFICADOR}      { return Parser.IDENTIFICADOR; }
 }
 <INDENTA>{
-  {SALTO}                                 { actual = 0;}
   " "				          { actual++;}
   \t					  { actual += 4;}
   .					  { yypushback(1);
