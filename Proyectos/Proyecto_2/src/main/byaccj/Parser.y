@@ -3,7 +3,7 @@
   import java.io.*;
 %}
 /* Átomos del lenguaje */
-%token DEINDENTA INDENTA OTRO
+%token DEINDENTA INDENTA OTRO IDENTIFICADOR ENTERO CADENA REAL BOOLEANO
 
 /* Producciones */
 %%
@@ -15,8 +15,22 @@ indenta : stmt
         | stmt INDENTA indenta DEINDENTA indenta
 ;
 /* stmt: OTRO+ */
-stmt: OTRO
-    | stmt OTRO
+stmt: power
+    | stmt power
+;
+// power: atom ['**' factor]
+power: atom                   { System.out.println("[OK]");}
+  | atom '**' factor                   { System.out.println("[OK]");}
+  ;
+// atom: IDENTIFICADOR | ENTERO | CADENA | REAL | BOOLEANO | '(' test ')'
+atom: IDENTIFICADOR
+  | ENTERO
+  | CADENA
+  | REAL
+  | BOOLEANO
+  | OTRO
+  | constructor
+  ;
 ;
 %%
 /* referencia al generadores de analizadores léxicos */

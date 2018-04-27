@@ -69,7 +69,18 @@ import java.util.Stack;
         }else yybegin(CODIGO);
     }
 %}
-SALTO                   =       "\n"
+SALTO           =       (\r|\n|\r\n)+
+BOOLEANO        = "True" | "False"
+ASCIIDIGIT      = [0-9]
+DIGIT           = {ASCIIDIGIT}
+OCTIT           = [0-7]
+HEXIT           = {DIGIT} | [A-Fa-f]
+DECIMAL         = {DIGIT}+
+OCTAL           = {OCTIT}+
+HEXADECIMAL     = {HEXIT}+
+ENTERO          = {DECIMAL} | "0o" {OCTAL} | "0O" {OCTAL} | "0x" {HEXADECIMAL} | "0X" {HEXADECIMAL}
+REAL            = {DECIMAL} "." {DECIMAL} {EXPONENTE}? | {DECIMAL} {EXPONENTE}?
+EXPONENTE       = ("e" | "E") ("+" | "-")? {DECIMAL}
 %%
 <YYINITIAL>{
   (" " | "\t" )+[^" ""\t""#""\n"]         { System.out.println("Error de indentación. Línea "+(yyline+1));
@@ -87,6 +98,9 @@ SALTO                   =       "\n"
 }
 <CODIGO>{
   {SALTO}				  { yybegin(INDENTA); actual=0;}
+  {BOOLEANO}      {  return Parser.BOOLEANO; }
+  {ENTERO}      { return Parser.ENTERO; }
+  {REAL}      { return Parser.REAL; }
 }
 <INDENTA>{
   {SALTO}                                 { actual = 0;}
