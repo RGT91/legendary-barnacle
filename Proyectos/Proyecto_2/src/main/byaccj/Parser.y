@@ -4,7 +4,7 @@
 %}
 /* Átomos del lenguaje */
 %token DEINDENTA INDENTA OTRO IDENTIFICADOR ENTERO CADENA REAL BOOLEANO POWER
-%token SIGNUM OPERADOR COMPARADOR NOT AND OR
+%token SIGNUM OPERADOR COMPARADOR NOT AND OR LEFTPAR RIGTHPAR
 
 /* Producciones */
 %%
@@ -16,9 +16,12 @@ indenta : stmt
         | stmt INDENTA indenta DEINDENTA indenta
 ;
 /* stmt: OTRO+ */
-stmt: or_test
-    | stmt or_test
+stmt: test
+    | stmt test
 ;
+// test: or_test
+test: or_test                   { System.out.println("[OK]");}
+  ;
 // or_test: and_test ('or' and_test)*
 or_test: and_test                   { System.out.println("[OK]");}
   | and_test or_rec                   { System.out.println("[OK]");}
@@ -66,6 +69,7 @@ atom: IDENTIFICADOR
   | REAL
   | BOOLEANO
   | OTRO
+  | LEFTPAR test RIGTHPAR
   ;
 ;
 %%
