@@ -72,6 +72,7 @@ import java.util.Stack;
 SALTO           =       (\r|\n|\r\n)+
 BOOLEANO        = "True" | "False"
 SIGNUM          = "+" | "-"
+OPERADOR        = "*" | "/" | "%" | "//"
 POWER           = "**"
 ASCIIDIGIT      = [0-9]
 DIGIT           = {ASCIIDIGIT}
@@ -101,6 +102,7 @@ EXPONENTE       = ("e" | "E") {SIGNUM}? {DECIMAL}
 <CODIGO>{
   {SALTO}				  { yybegin(INDENTA); actual=0;}
   {POWER}      {  return Parser.POWER; }
+  {OPERADOR}      {  return Parser.OPERADOR; }
   {BOOLEANO}      {  return Parser.BOOLEANO; }
   {ENTERO}      { return Parser.ENTERO; }
   {REAL}      { return Parser.REAL; }
