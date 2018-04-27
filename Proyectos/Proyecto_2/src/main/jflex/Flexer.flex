@@ -4,6 +4,7 @@
 *********************************************************************************/
 package asintactico;
 import java.util.Stack;
+import java.io.IOException;
 %%
 %public
 %class Flexer
@@ -161,4 +162,4 @@ COMENTARIO 		=     	"#".*{SALTO}
 				            }
 					  }
 " "         { }
-.					  { return Parser.OTRO;}
+.					  { throw new IOException("no reconocido");}
