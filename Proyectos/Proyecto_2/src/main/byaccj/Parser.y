@@ -3,7 +3,7 @@
   import java.io.*;
 %}
 /* Átomos del lenguaje */
-%token DEINDENTA INDENTA OTRO IDENTIFICADOR ENTERO CADENA REAL BOOLEANO
+%token DEINDENTA INDENTA OTRO IDENTIFICADOR ENTERO CADENA REAL BOOLEANO POWER SIGNUM
 
 /* Producciones */
 %%
@@ -15,12 +15,17 @@ indenta : stmt
         | stmt INDENTA indenta DEINDENTA indenta
 ;
 /* stmt: OTRO+ */
-stmt: power
-    | stmt power
+stmt: factor
+    | stmt factor
 ;
+// factor: ('+'|'-') factor | power
+factor: power                   { System.out.println("[OK]");}
+  | SIGNUM factor                   { System.out.println("[OK]");}
+  ;
+
 // power: atom ['**' factor]
 power: atom                   { System.out.println("[OK]");}
-  | atom '**' factor                   { System.out.println("[OK]");}
+  | atom POWER factor                   { System.out.println("[OK]");}
   ;
 // atom: IDENTIFICADOR | ENTERO | CADENA | REAL | BOOLEANO | '(' test ')'
 atom: IDENTIFICADOR
@@ -29,7 +34,6 @@ atom: IDENTIFICADOR
   | REAL
   | BOOLEANO
   | OTRO
-  | constructor
   ;
 ;
 %%
