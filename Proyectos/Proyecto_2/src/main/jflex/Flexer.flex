@@ -10,7 +10,7 @@ import java.util.Stack;
 %byaccj
 %line
 %debug
-%state INDENTA CODIGO DEINDENTA
+%state INDENTA CODIGO DEINDENTA CADENA
 %unicode
 %{
     /** Variables auxiliares para
@@ -70,11 +70,17 @@ import java.util.Stack;
     }
 %}
 SALTO           =       (\r|\n|\r\n)+
+CHAR_LITERAL   	= ([:letter:] | [:digit:] | "_" | "$" | " " | "#" | {OPERADOR} | {COMPARADOR} | {SEPARADOR}) | "\\" | "\\\""
 BOOLEANO        = "True" | "False"
 LEFTPAR         = "("
 RIGTHPAR        = ")"
+SEPARADOR       = ":"
+EQ              = "="
 OR              = "or"
+IF              = "if"
 AND             = "and"
+WHILE           = "while"
+PRINT           = "print"
 NOT             = "not" | "!"
 SIGNUM          = "+" | "-"
 OPERADOR        = "*" | "/" | "%" | "//"
@@ -108,14 +114,25 @@ COMENTARIO 		=     	"#".*{SALTO}
   					    }
 					    yybegin(CODIGO);}
 }
+<CADENA>{
+  {CHAR_LITERAL}*(\" | ' )			{ yybegin(CODIGO); return Parser.CADENA; }
+  {SALTO}				{ return 0;}
+}
 <CODIGO>{
+  \"					{ yybegin(CADENA); }
+  '				{ yybegin(CADENA); }
   {SALTO}				  { yybegin(INDENTA); actual=0; return Parser.SALTO;}
   {POWER}      {  return Parser.POWER; }
   {LEFTPAR}      {  return Parser.LEFTPAR; }
   {RIGTHPAR}      {  return Parser.RIGTHPAR; }
+  {SEPARADOR}      {  return Parser.SEPARADOR; }
+  {EQ}      {  return Parser.EQ; }
   {OR}      {  return Parser.OR; }
   {AND}      {  return Parser.AND; }
   {NOT}      {  return Parser.NOT; }
+  {IF}      {  return Parser.IF; }
+  {WHILE}      {  return Parser.WHILE; }
+  {PRINT}      {  return Parser.PRINT; }
   {SIGNUM}      {  return Parser.SIGNUM; }
   {OPERADOR}      {  return Parser.OPERADOR; }
   {COMPARADOR}      {  return Parser.COMPARADOR; }

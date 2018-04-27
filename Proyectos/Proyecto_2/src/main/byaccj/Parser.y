@@ -5,15 +5,12 @@
 /* Átomos del lenguaje */
 %token DEINDENTA INDENTA OTRO IDENTIFICADOR ENTERO CADENA REAL BOOLEANO POWER
 %token SIGNUM OPERADOR COMPARADOR NOT AND OR LEFTPAR RIGTHPAR SALTO
+%token WHILE SEPARADOR IF ELSE PRINT EQ
 
 /* Producciones */
 %%
 input:  { System.out.println("Reconocimiento Exitoso");}
-     | indenta { System.out.println("Reconocimiento Exitoso");}
-;
-indenta : file_input
-        | file_input INDENTA indenta DEINDENTA
-        | file_input INDENTA indenta DEINDENTA indenta
+     | file_input { System.out.println("Reconocimiento Exitoso");}
 ;
 // file_input: (SALTO | stmt)*
 file_input: SALTO                   { System.out.println("[OK]");}
@@ -21,9 +18,38 @@ file_input: SALTO                   { System.out.println("[OK]");}
   | SALTO file_input                { System.out.println("[OK]");}
   | stmt file_input                   { System.out.println("[OK]");}
   ;
-/* stmt: OTRO+ */
-stmt: test
-    | stmt test
+// stmt: simple_stmt | compound_stmt
+stmt: simple_stmt
+  | compound_stmt
+;
+// simple_stmt: small_stmt SALTO
+simple_stmt: small_stmt SALTO
+;
+// small_stmt: expr_stmt | print_stmt
+small_stmt: expr_stmt
+  | print_stmt
+;
+// expr_stmt: test '=' test
+expr_stmt: test
+  | test EQ test
+;
+//print_stmt: 'print' test
+print_stmt: PRINT test
+;
+// compound_stmt: if_stmt | while_stmt
+compound_stmt: if_stmt
+  | while_stmt
+;
+// if_stmt: 'if' test ':' suite ['else' ':' suite]
+if_stmt: IF test SEPARADOR suite
+  | IF test SEPARADOR suite ELSE SEPARADOR suite
+;
+// while_stmt: 'while' test ':' suite
+while_stmt: WHILE test SEPARADOR suite
+;
+// suite: simple_stmt | SALTO INDENTA stmt+ DEINDENTA
+suite: simple_stmt
+  | SALTO INDENTA file_input DEINDENTA
 ;
 // test: or_test
 test: or_test                   { System.out.println("[OK]");}
