@@ -85,7 +85,10 @@ HEXADECIMAL     = {HEXIT}+
 ENTERO          = {DECIMAL} | "0o" {OCTAL} | "0O" {OCTAL} | "0x" {HEXADECIMAL} | "0X" {HEXADECIMAL}
 REAL            = {DECIMAL} "." {DECIMAL} {EXPONENTE}? | {DECIMAL} {EXPONENTE}?
 EXPONENTE       = ("e" | "E") {SIGNUM}? {DECIMAL}
+IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
+COMENTARIO 		=     	"#".*{SALTO}
 %%
+{COMENTARIO}      			{}
 <YYINITIAL>{
   (" " | "\t" )+[^" ""\t""#""\n"]         { System.out.println("Error de indentación. Línea "+(yyline+1));
 					    System.exit(1);}
@@ -103,11 +106,13 @@ EXPONENTE       = ("e" | "E") {SIGNUM}? {DECIMAL}
 <CODIGO>{
   {SALTO}				  { yybegin(INDENTA); actual=0;}
   {POWER}      {  return Parser.POWER; }
+  {SIGNUM}      {  return Parser.SIGNUM; }
   {OPERADOR}      {  return Parser.OPERADOR; }
   {COMPARADOR}      {  return Parser.COMPARADOR; }
   {BOOLEANO}      {  return Parser.BOOLEANO; }
   {ENTERO}      { return Parser.ENTERO; }
   {REAL}      { return Parser.REAL; }
+  {IDENTIFICADOR}      { return Parser.IDENTIFICADOR; }
 }
 <INDENTA>{
   {SALTO}                                 { actual = 0;}
@@ -129,4 +134,5 @@ EXPONENTE       = ("e" | "E") {SIGNUM}? {DECIMAL}
                                               return 0;
 				            }
 					  }
+" "         { }
 .					  { return Parser.OTRO;}
