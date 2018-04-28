@@ -13,7 +13,8 @@ input:  { System.out.println("Reconocimiento Exitoso");}
      | file_input { System.out.println("Reconocimiento Exitoso");}
 ;
 // file_input: (SALTO | stmt)* ENDMARKER
-file_input: SALTO ENDMARKER                { System.out.println("[OK]");}
+file_input: ENDMARKER             { System.out.println("[OK]");}
+  | SALTO ENDMARKER                { System.out.println("[OK]");}
   | stmt ENDMARKER                  { System.out.println("[OK]");}
   | SALTO file_input                { System.out.println("[OK]");}
   | stmt file_input                   { System.out.println("[OK]");}
