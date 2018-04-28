@@ -99,7 +99,6 @@ REAL            = {DECIMAL} "." {DECIMAL} {EXPONENTE}? | {DECIMAL} {EXPONENTE}?
 EXPONENTE       = ("e" | "E") {SIGNUM}? {DECIMAL}
 IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
 COMENTARIO 		=     	"#".*{SALTO}
-ENDMARKER 	= <<EOF>> {}
 %%
 {COMENTARIO}      			{}
 <YYINITIAL>{
