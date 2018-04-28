@@ -141,7 +141,6 @@ COMENTARIO 		=     	"#".*{SALTO}
   {ENTERO}      { return Parser.ENTERO; }
   {REAL}      { return Parser.REAL; }
   {IDENTIFICADOR}      { return Parser.IDENTIFICADOR; }
-  <<EOF>>	{return Parser.ENDMARKER; }
 }
 <INDENTA>{
   " "				          { actual++;}
