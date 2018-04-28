@@ -5,16 +5,16 @@
 /* Átomos del lenguaje */
 %token DEINDENTA INDENTA IDENTIFICADOR ENTERO CADENA REAL BOOLEANO POWER
 %token SIGNUM OPERADOR COMPARADOR NOT AND OR LEFTPAR RIGTHPAR SALTO
-%token WHILE SEPARADOR IF ELSE PRINT EQ
+%token WHILE SEPARADOR IF ELSE PRINT EQ ENDMARKER
 
 /* Producciones */
 %%
 input:  { System.out.println("Reconocimiento Exitoso");}
      | file_input { System.out.println("Reconocimiento Exitoso");}
 ;
-// file_input: (SALTO | stmt)*
-file_input: SALTO                   { System.out.println("[OK]");}
-  | stmt                   { System.out.println("[OK]");}
+// file_input: (SALTO | stmt)* ENDMARKER
+file_input: SALTO ENDMARKER                { System.out.println("[OK]");}
+  | stmt ENDMARKER                  { System.out.println("[OK]");}
   | SALTO file_input                { System.out.println("[OK]");}
   | stmt file_input                   { System.out.println("[OK]");}
   ;
