@@ -98,7 +98,6 @@ ENTERO          = {DECIMAL} | "0o" {OCTAL} | "0O" {OCTAL} | "0x" {HEXADECIMAL} |
 REAL            = {DECIMAL} "." {DECIMAL} {EXPONENTE}? | {DECIMAL} {EXPONENTE}?
 EXPONENTE       = ("e" | "E") {SIGNUM}? {DECIMAL}
 IDENTIFICADOR   = [a-zA-Z_]([a-zA-Z0-9_])*
-ENDMARKER	= EOF
 COMENTARIO 		=     	"#".*{SALTO}
 %%
 {COMENTARIO}      			{}
