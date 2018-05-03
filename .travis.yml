@@ -42,3 +42,9 @@ jobs:
         - mvn compile
         - mvn exec:java -Dexec.mainClass="asintactico.Parser" -Dexec.args="resources/fizzbuzz.py"
         - mvn install
+    - stage: proyecto3
+      script:
+        - cd Proyectos/Proyecto_3
+        - mvn initialize
+        - mvn compile
+        - mvn install
