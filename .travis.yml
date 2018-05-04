@@ -48,3 +48,4 @@ jobs:
         - mvn initialize
         - mvn compile
         - mvn install
+        - mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args=""

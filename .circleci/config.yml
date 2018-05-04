@@ -91,6 +91,9 @@ jobs:
       - run:
           working_directory: Proyectos/Proyecto_3
           command: mvn install
+      - run:
+          working_directory: Proyectos/Proyecto_3
+          command: mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args=""
 
 workflows:
   version: 2
@@ -100,7 +103,7 @@ workflows:
       - practica2:
           requires:
             - practica1
-      - proyecto1:
+      - proyecto1
       - practica3:
           requires:
             - practica2
