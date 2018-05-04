@@ -90,10 +90,13 @@ jobs:
           command: mvn compile
       - run:
           working_directory: Proyectos/Proyecto_3
-          command: mvn install
+          command: mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/fizzbuzz.p"
       - run:
           working_directory: Proyectos/Proyecto_3
-          command: mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args=""
+          command: mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/test.p"
+      - run:
+          working_directory: Proyectos/Proyecto_3
+          command: mvn install
 
 workflows:
   version: 2

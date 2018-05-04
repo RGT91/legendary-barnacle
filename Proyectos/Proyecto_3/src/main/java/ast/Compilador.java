@@ -27,16 +27,19 @@ public class Compilador{
     }
 
     public static void main(String[] args){
-            String archivo = "src/main/resources/test.p";
-        try{
-            Reader a = new FileReader(archivo);
-            Compilador c  = new Compilador(a);
-            c.ConstruyeAST(true);
-            c.imprimeAST();
-        }catch(FileNotFoundException e){
-            System.err.println("El archivo " + archivo +" no fue encontrado. ");
-        }catch(ArrayIndexOutOfBoundsException e){
-            System.err.println("Uso: java Compilador [archivo.p]: ");
+        if(args.length>0 && !args[0].equals("")){
+            String archivo = args[0];
+            System.out.println(archivo);
+            try{
+                Reader a = new FileReader(archivo);
+                Compilador c  = new Compilador(a);
+                c.ConstruyeAST(true);
+                c.imprimeAST();
+            }catch(FileNotFoundException e){
+                System.err.println("El archivo " + archivo +" no fue encontrado. ");
+            }catch(ArrayIndexOutOfBoundsException e){
+                System.err.println("Uso: java Compilador [archivo.p]: ");
+            }
         }
     }
 }
