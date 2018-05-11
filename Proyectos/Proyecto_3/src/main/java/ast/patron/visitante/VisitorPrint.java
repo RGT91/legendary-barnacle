@@ -42,14 +42,6 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.print("]");
     }
-    public void visit(EqNodo n){
-        System.out.println("[=]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("][");
-        n.getUltimoHijo().accept(this);
-        System.out.print("]");
-    }
     public void visit(CompNodo n){
         System.out.println("["+n.op+"]");
         System.out.print("[");
@@ -82,6 +74,12 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.print("][else][:]\n[");
         n.getUltimoHijo().accept(this);
+        System.out.print("]");
+    }
+    public void visit(PrintNodo n){
+        System.out.println("[print]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
         System.out.print("]");
     }
     public void visit(Hoja n){

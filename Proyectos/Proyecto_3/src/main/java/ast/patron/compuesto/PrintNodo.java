@@ -1,11 +1,11 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-public class EqNodo extends NodoBinario
+public class PrintNodo extends NodoBinario
 {
 
-    public EqNodo(Nodo l, Nodo r){
-	     super(l,r);
+    public PrintNodo(Nodo l){
+	     super(l,null);
     }
 
     public void accept(Visitor v){
