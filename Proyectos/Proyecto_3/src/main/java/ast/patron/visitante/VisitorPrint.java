@@ -120,7 +120,7 @@ public class VisitorPrint implements Visitor
         System.out.println("]");
     }
     
-    public void visit(DiffNodo n){
+    public void visit(NEqNodo n){
         System.out.println("[!=]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
