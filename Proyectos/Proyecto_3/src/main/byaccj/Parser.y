@@ -30,12 +30,12 @@ aux0: SALTO
 
 /*    stmt: simple_stmt | compound_stmt*/
 stmt: simple_stmt {$$ = $1;}
-    | compound_stmt {}
+    | compound_stmt { $$ = $1; }
 ;
 
 /* compound_stmt: if_stmt | while_stmt */
-compound_stmt: if_stmt {}
-             | while_stmt {}
+compound_stmt: if_stmt { }
+             | while_stmt { $$ = $1;}
 ;
 
 /* if_stmt: 'if' test ':' suite ['else' ':' suite] */
@@ -44,7 +44,7 @@ if_stmt:  IF test DOBLEPUNTO suite ELSE DOBLEPUNTO suite {}
 ;
 
 /*    while_stmt: 'while' test ':' suite */
-while_stmt: WHILE test DOBLEPUNTO suite {}
+while_stmt: WHILE test DOBLEPUNTO suite {$$ = new WhileNodo($2, $4);}
 ;
 
 /*    suite: simple_stmt | SALTO INDENTA stmt+ DEINDENTA */

@@ -38,15 +38,25 @@ public class VisitorPrint implements Visitor
         System.out.println("[-]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
+        System.out.print("][");
         n.getUltimoHijo().accept(this);
+        System.out.print("]");
     }
     public void visit(EqNodo n){
         System.out.println("[=]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
+        System.out.print("][");
         n.getUltimoHijo().accept(this);
+        System.out.print("]");
+    }
+    public void visit(WhileNodo n){
+        System.out.println("[while]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("][:]\n[");
+        n.getUltimoHijo().accept(this);
+        System.out.print("]");
     }
     public void visit(Hoja n){
 

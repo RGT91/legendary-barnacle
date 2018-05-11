@@ -8,6 +8,7 @@ public interface Visitor
     public void visit(Compuesto n);
     public void visit(DifNodo n);  //
     public void visit(EqNodo n);
+    public void visit(WhileNodo n);
     public void visit(Hoja n);
     public void visit(IdentifierHoja n);
     public void visit(IntHoja n);
