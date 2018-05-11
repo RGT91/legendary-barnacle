@@ -39,8 +39,8 @@ compound_stmt: if_stmt { }
 ;
 
 /* if_stmt: 'if' test ':' suite ['else' ':' suite] */
-if_stmt:  IF test DOBLEPUNTO suite ELSE DOBLEPUNTO suite {}
-        | IF test DOBLEPUNTO suite {}
+if_stmt:  IF test DOBLEPUNTO suite ELSE DOBLEPUNTO suite { $$ = new IfElseNodo($2, $4, $7); }
+        | IF test DOBLEPUNTO suite { $$ = new IfNodo($2, $4); }
 ;
 
 /*    while_stmt: 'while' test ':' suite */
