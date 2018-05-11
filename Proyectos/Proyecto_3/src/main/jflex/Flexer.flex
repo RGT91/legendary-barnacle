@@ -117,12 +117,18 @@ BOOLEAN		        =	("True" | "False")
   "/"					  { return Parser.DIV;}
   "//"					  { return Parser.DIVENTERA;}
   "%"					  { return Parser.MODULO;}
-  "<"				          { return Parser.LE;}
-  ">"				          { return Parser.GR;}
-  "<="                                    { return Parser.LEQ;}
-  ">="                                    { return Parser.GRQ;}
-  "=="                                    { return Parser.EQUALS;}
-  "!="                                    { return Parser.DIFF;}
+  "<"				          { yyparser.yylval = new MenorNodo();
+                                            return Parser.LE;}
+  ">"				          { yyparser.yylval = new MayorNodo();
+                                            return Parser.GR;}
+  "<="                { yyparser.yylval = new MenorENodo();
+                                            return Parser.LEQ;}
+  ">="                { yyparser.yylval = new MayorENodo();
+                                            return Parser.GRQ;}
+  "=="                { yyparser.yylval = new IgualNodo();
+                                            return Parser.EQUALS;}
+  "!="                { yyparser.yylval = new NoIgualNodo();
+                                            return Parser.DIFF;}
   "="                                     { return Parser.EQ;}
   "("                                     { return Parser.PA;}
   ")"                                     { return Parser.PC;}

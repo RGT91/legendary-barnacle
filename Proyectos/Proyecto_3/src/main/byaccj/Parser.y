@@ -105,12 +105,12 @@ not_test: NOT not_test {}
 
 /*    comparison: (expr comp_op)* expr  */
 comparison: expr {$$ = $1;}
-          | aux4 expr {}
+          | aux4 expr { $$ = $1; $$.agregaHijoFinal($2); }
 ;
 
 /*    aux4: (expr comp_op)+  */
-aux4: expr comp_op {}
-    | aux4 expr comp_op {}
+aux4: expr comp_op {$$ = $2; $$.agregaHijoPrincipio($1); }
+    | aux4 expr comp_op { $$ = $3; $1.agregaHijoFinal($2); $$.agregaHijoPrincipio($1); }
 ;
 
 /*    comp_op: '<'|'>'|'=='|'>='|'<='|'!=' */

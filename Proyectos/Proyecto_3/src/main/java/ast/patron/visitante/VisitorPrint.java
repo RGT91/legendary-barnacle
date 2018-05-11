@@ -50,6 +50,14 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.print("]");
     }
+    public void visit(CompNodo n){
+        System.out.println("["+n.op+"]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("][");
+        n.getUltimoHijo().accept(this);
+        System.out.print("]");
+    }
     public void visit(WhileNodo n){
         System.out.println("[while]");
         System.out.print("[");
