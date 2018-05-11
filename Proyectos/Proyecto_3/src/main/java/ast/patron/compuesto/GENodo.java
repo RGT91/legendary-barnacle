@@ -5,7 +5,6 @@ public class GENodo extends NodoBinario
 {
 
     public GENodo(Nodo l, Nodo r){
-    public GENodo(Nodo l, Nodo r){
 	super(l,r);
     }
 
