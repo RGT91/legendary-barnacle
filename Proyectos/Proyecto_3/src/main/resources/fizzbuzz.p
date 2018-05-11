@@ -1,4 +1,5 @@
 # FizzBuzz
+algo = True
 indice = 1
 while indice < 31:
    otro = True

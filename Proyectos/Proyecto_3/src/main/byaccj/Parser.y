@@ -68,7 +68,7 @@ small_stmt: expr_stmt {$$ = $1;}
 
 /* expr_stmt: test ['=' test] */
 expr_stmt: test {$$ = $1;}
-         | test EQ test {}
+         | test EQ test { $$ = new EqNodo($1, $3); }
 ;
 
 /* print_stmt: 'print' test  */
@@ -160,7 +160,7 @@ atom:  IDENTIFICADOR {$$ = $1;}
      | ENTERO {$$ = $1;}
      | CADENA {}
      | REAL {}
-     | BOOLEANO {}
+     | BOOLEANO {$$ = $1;}
      | PA test PC {}
 ;
 %%

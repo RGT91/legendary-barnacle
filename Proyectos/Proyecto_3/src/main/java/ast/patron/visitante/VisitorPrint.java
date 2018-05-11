@@ -41,6 +41,13 @@ public class VisitorPrint implements Visitor
         System.out.print("]");
         n.getUltimoHijo().accept(this);
     }
+    public void visit(EqNodo n){
+        System.out.println("[=]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        n.getUltimoHijo().accept(this);
+    }
     public void visit(Hoja n){
 
     }
@@ -49,6 +56,9 @@ public class VisitorPrint implements Visitor
     }
     public void visit(IntHoja n){
 	System.out.print("[Hoja Entera] valor: " + n.getValor().ival);
+    }
+    public void visit(BoolHoja n){
+	System.out.print("[Hoja Booleana] valor: " + n.getValor().bval);
     }
     public void visit(Nodo n){
 
