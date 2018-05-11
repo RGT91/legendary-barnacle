@@ -134,7 +134,7 @@ aux8: term MAS {$$ = new AddNodo($1,null);}
 
 /*   term: (factor ('*'|'/'|'%'|'//'))* factor   */
 term: factor {$$ = $1;}
-    | aux9 factor {}
+    | aux9 factor {$$ = $1; $$.agregaHijoFinal($2);}
 ;
 aux9: factor POR {$$ = new MultNodo($1,null);}
     | factor DIVENTERA {$$ = new DivENodo($1,null);}
