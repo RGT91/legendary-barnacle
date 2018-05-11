@@ -136,14 +136,14 @@ aux8: term MAS {$$ = new AddNodo($1,null);}
 term: factor {$$ = $1;}
     | aux9 factor {}
 ;
-aux9: factor POR {}
-    | factor DIVENTERA {}
-    | factor MODULO {}
-    | factor DIV {}
-    | aux9 factor POR {}
-    | aux9 factor DIVENTERA {}
-    | aux9 factor MODULO {}
-    | aux9 factor DIV {}
+aux9: factor POR {$$ = new MultNodo($1,null);}
+    | factor DIVENTERA {$$ = new DivENodo($1,null);}
+    | factor MODULO {$$ = new ModNodo($1,null);}
+    | factor DIV {$$ = new DivNodo($1,null);}
+    | aux9 factor POR {$1.agregaHijoFinal($2); $$ = new MultNodo($1,null);}
+    | aux9 factor DIVENTERA {$1.agregaHijoFinal($2); $$ = new DivENodo($1,null);}
+    | aux9 factor MODULO {$1.agregaHijoFinal($2); $$ = new ModNodo($1,null);}
+    | aux9 factor DIV {$1.agregaHijoFinal($2); $$ = new DivNodo($1,null);}
 ;
 /* factor: ('+'|'-') factor | power */
 factor: MAS factor {}
@@ -152,7 +152,7 @@ factor: MAS factor {}
 ;
 /* power: atom ['**' factor] */
 power:  atom {$$ = $1;}
-      | atom POTENCIA factor {}
+      | atom POTENCIA factor {$$ = new PotNodo($1, $3);}
 ;
 
 /* atom: IDENTIFICADOR | ENTERO | CADENA | REAL | BOOLEANO | '(' test ')' */
