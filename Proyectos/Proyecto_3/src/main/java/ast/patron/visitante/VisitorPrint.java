@@ -189,6 +189,28 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
+    public void visit(AndNodo n){
+        System.out.println("[&]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("][:]\n[");
+        n.getUltimoHijo().accept(this);
+        System.out.print("]");
+    }
+    public void visit(OrNodo n){
+        System.out.println("[|]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("][:]\n[");
+        n.getUltimoHijo().accept(this);
+        System.out.print("]");
+    }
+    public void visit(NotNodo n){
+        System.out.println("[¬]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+    }
     public void visit(Hoja n){
 
     }
