@@ -23,6 +23,9 @@ public interface Visitor
     public void visit(NEqNodo n);
     public void visit(ModNodo n);
     public void visit(DivENodo n);
+    public void visit(AndNodo n);
+    public void visit(OrNodo n);
+    public void visit(NotNodo n);
     public void visit(Hoja n);
     public void visit(IdentifierHoja n);
     public void visit(IntHoja n);
