@@ -117,8 +117,8 @@ aux4: expr comp_op {$$ = $2; $$.agregaHijoPrincipio($1); }
 comp_op: LE {$$ = new LTNodo($1,$3);}
        | GR {$$ = new GTNodo($1,$3);}
        | EQUALS {$$ = new EqNodo($1,$3);}
-       | GRQ {$$ = new GEqNodo($1,$3);}
-       | LEQ {$$ = new LEqNodo($1,$3);}
+       | GRQ {$$ = new GENodo($1,$3);}
+       | LEQ {$$ = new LENodo($1,$3);}
        | DIFF {$$ = new NEqNodo($1,$3);}
 ;
 
