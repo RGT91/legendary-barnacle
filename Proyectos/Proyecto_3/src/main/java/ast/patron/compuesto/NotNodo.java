@@ -1,11 +1,11 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-public class NotHoja extends Hoja
+public class NotNodo extends NodoBinario
 {
 
-    public NotHoja(boolean b){
-	val = !b;
+    public NotNodo(Nodo l, Nodo r){
+	super(l,r);
     }
 
     public void accept(Visitor v){
