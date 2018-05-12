@@ -81,25 +81,25 @@ test: or_test {$$ = $1;}
 
 /*    or_test: (and_test 'or')* and_test  */
 or_test: and_test {$$ = $1;}
-       | aux2 and_test {}
+       | aux2 and_test {$$ = $1; $$.agregaHijoFinal($2);}
 ;
 /*    aux2: (and_test 'or')+  */
-aux2: and_test OR {}
-    | aux2 and_test OR {}
+aux2: and_test OR {$$ = $1;}
+    | aux2 and_test OR {$$ = new OrNodo($1, $3);}
 ;
 
 /*    and_expr: (not_test 'and')* not_test */
 and_test: not_test {$$ = $1;}
-        | aux7 not_test {}
+        | aux7 not_test {$$ = $1; $$.agregaHijoFinal($2);}
 ;
 
 /*    and_expr: (not_test 'and')+ */
-aux7: not_test AND {}
-    | aux7 not_test AND {}
+aux7: not_test AND {$$ = $1;}
+    | aux7 not_test AND {$$ = new AndNodo($1, $3);}
 ;
 
 /*    not_test: 'not' not_test | comparison */
-not_test: NOT not_test {}
+not_test: NOT not_test {$$ = new OrNodo($1, null);}
         | comparison {$$ = $1;}
 ;
 
