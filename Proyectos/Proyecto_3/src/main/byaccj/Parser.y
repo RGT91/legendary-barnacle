@@ -158,7 +158,7 @@ power:  atom {$$ = $1;}
 /* atom: IDENTIFICADOR | ENTERO | CADENA | REAL | BOOLEANO | '(' test ')' */
 atom:  IDENTIFICADOR {$$ = $1;}
      | ENTERO {$$ = $1;}
-     | CADENA {}
+     | CADENA { $$ = $1;}
      | REAL {}
      | BOOLEANO {$$ = $1;}
      | PA test PC {}

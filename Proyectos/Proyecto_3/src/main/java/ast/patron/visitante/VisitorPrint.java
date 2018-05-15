@@ -100,7 +100,7 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
-    
+
     public void visit(PotNodo n){
         System.out.println("[**]");
         System.out.print("[");
@@ -119,7 +119,7 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
-    
+
     public void visit(GTNodo n){
         System.out.println("[>]");
         System.out.print("[");
@@ -129,7 +129,7 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
-    
+
     public void visit(LENodo n){
         System.out.println("[<=]");
         System.out.print("[");
@@ -139,7 +139,7 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
-    
+
     public void visit(GENodo n){
         System.out.println("[>=]");
         System.out.print("[");
@@ -149,7 +149,7 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
-    
+
     public void visit(EqNodo n){
         System.out.println("[==]");
         System.out.print("[");
@@ -159,7 +159,7 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
-    
+
     public void visit(NEqNodo n){
         System.out.println("[!=]");
         System.out.print("[");
@@ -169,7 +169,7 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
-    
+
     public void visit(ModNodo n){
         System.out.println("[%]");
         System.out.print("[");
@@ -179,7 +179,7 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
-    
+
     public void visit(DivENodo n){
         System.out.println("[//]");
         System.out.print("[");
@@ -222,6 +222,9 @@ public class VisitorPrint implements Visitor
     }
     public void visit(BoolHoja n){
 	System.out.print("[Hoja Booleana] valor: " + n.getValor().bval);
+    }
+    public void visit(CadenaHoja n){
+	System.out.print("[Hoja Cadena] valor: " + n.getValor().sval);
     }
     public void visit(Nodo n){
 

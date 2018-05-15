@@ -103,7 +103,7 @@ BOOLEAN		        =	("True" | "False")
 <CADENA>{
   {CHAR_LITERAL}+                         { cadena = yytext();}
   \"					  { yybegin(CODIGO);
-                                            cadena = "";
+                    yyparser.yylval = new CadenaHoja(cadena);    cadena = "";
 					    return Parser.CADENA;}
   {SALTO}				  { System.out.println("Unexpected newline. Line "+(yyline+1));
 					     System.exit(1);}
