@@ -34,7 +34,7 @@ stmt: simple_stmt {$$ = $1;}
 ;
 
 /* compound_stmt: if_stmt | while_stmt */
-compound_stmt: if_stmt { }
+compound_stmt: if_stmt { $$ = $1; }
              | while_stmt { $$ = $1;}
 ;
 
@@ -84,8 +84,8 @@ or_test: and_test {$$ = $1;}
        | aux2 and_test {$$ = $1; $$.agregaHijoFinal($2);}
 ;
 /*    aux2: (and_test 'or')+  */
-aux2: and_test OR {$$ = $1;}
-    | aux2 and_test OR {$$ = new OrNodo($1, $3);}
+aux2: and_test OR {$$ =new OrNodo($1, null);}
+    | aux2 and_test OR {$1.agregaHijoFinal($2); $$ = new OrNodo($1, null);}
 ;
 
 /*    and_expr: (not_test 'and')* not_test */
@@ -94,12 +94,12 @@ and_test: not_test {$$ = $1;}
 ;
 
 /*    and_expr: (not_test 'and')+ */
-aux7: not_test AND {$$ = $1;}
-    | aux7 not_test AND {$$ = new AndNodo($1, $3);}
+aux7: not_test AND {$$ =new AndNodo($1, null);}
+    | aux7 not_test AND {$1.agregaHijoFinal($2); $$ = new AndNodo($1, null);}
 ;
 
 /*    not_test: 'not' not_test | comparison */
-not_test: NOT not_test {$$ = new OrNodo($1, null);}
+not_test: NOT not_test {$$ = new NotNodo($2);}
         | comparison {$$ = $1;}
 ;
 
@@ -114,12 +114,12 @@ aux4: expr comp_op {$$ = $2; $$.agregaHijoPrincipio($1); }
 ;
 
 /*    comp_op: '<'|'>'|'=='|'>='|'<='|'!=' */
-comp_op: LE {$$ = new LTNodo($1,$3);}
-       | GR {$$ = new GTNodo($1,$3);}
-       | EQUALS {$$ = new EqNodo($1,$3);}
-       | GRQ {$$ = new GENodo($1,$3);}
-       | LEQ {$$ = new LENodo($1,$3);}
-       | DIFF {$$ = new NEqNodo($1,$3);}
+comp_op: LE {$$ = new LTNodo(null,null);}
+       | GR {$$ = new GTNodo(null,null);}
+       | EQUALS {$$ = new EqNodo(null,null);}
+       | GRQ {$$ = new GENodo(null,null);}
+       | LEQ {$$ = new LENodo(null,null);}
+       | DIFF {$$ = new NEqNodo(null,null);}
 ;
 
 /*    expr: (term ('+'|'-'))* term   */
