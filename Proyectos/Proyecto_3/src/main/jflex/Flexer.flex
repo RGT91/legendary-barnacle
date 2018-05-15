@@ -143,7 +143,8 @@ BOOLEAN		        =	("True" | "False")
   "if"                                    { return Parser.IF;}
   "print"				  { return Parser.PRINT;}
   {SALTO}				  { yybegin(INDENTA); actual=0; return Parser.SALTO;}
-  {REAL}				  { return Parser.REAL;}
+  {REAL}				  { yyparser.yylval = new FloatHoja(Double.parseDouble(yytext()));
+                                            return Parser.REAL;}
   {ENTERO}				  { yyparser.yylval = new IntHoja(Integer.parseInt(yytext()));
                                             return Parser.ENTERO; }
   {BOOLEAN}         { yyparser.yylval = new BoolHoja(Boolean.parseBoolean(yytext()));

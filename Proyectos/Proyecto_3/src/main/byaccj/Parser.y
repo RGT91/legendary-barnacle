@@ -159,9 +159,9 @@ power:  atom {$$ = $1;}
 atom:  IDENTIFICADOR {$$ = $1;}
      | ENTERO {$$ = $1;}
      | CADENA { $$ = $1;}
-     | REAL {}
+     | REAL {$$ = $1;}
      | BOOLEANO {$$ = $1;}
-     | PA test PC {}
+     | PA test PC { $$ = $2; }
 ;
 %%
 private Flexer lexer;

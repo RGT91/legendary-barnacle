@@ -226,6 +226,9 @@ public class VisitorPrint implements Visitor
     public void visit(CadenaHoja n){
 	System.out.print("[Hoja Cadena] valor: " + n.getValor().sval);
     }
+    public void visit(FloatHoja n){
+	System.out.print("[Hoja Real] valor: " + n.getValor().dval);
+    }
     public void visit(Nodo n){
 
     }
