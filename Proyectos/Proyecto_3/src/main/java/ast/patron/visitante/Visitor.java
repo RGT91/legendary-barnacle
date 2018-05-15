@@ -10,6 +10,7 @@ public interface Visitor
     public void visit(CompNodo n);
     public void visit(WhileNodo n);
     public void visit(IfNodo n);
+    public void visit(FactorNodo n);
     public void visit(PrintNodo n);
     public void visit(IfElseNodo n);
     public void visit(MultNodo n);
@@ -32,6 +33,8 @@ public interface Visitor
     public void visit(BoolHoja n);
     public void visit(FloatHoja n);
     public void visit(CadenaHoja n);
+    public void visit(PositivoHoja n);
+    public void visit(NegativoHoja n);
     public void visit(Nodo n);
     public void visit(NodoBinario n);
     public void visit(NodoStmts n);

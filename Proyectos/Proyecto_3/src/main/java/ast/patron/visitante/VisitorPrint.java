@@ -159,7 +159,13 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
-
+    public void visit(FactorNodo n){
+        System.out.println("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.print("]]");
+    }
     public void visit(NEqNodo n){
         System.out.println("[!=]");
         System.out.print("[");
@@ -228,6 +234,12 @@ public class VisitorPrint implements Visitor
     }
     public void visit(FloatHoja n){
 	System.out.print("[Hoja Real] valor: " + n.getValor().dval);
+    }
+    public void visit(PositivoHoja n){
+	System.out.print("[Hoja signo +]");
+    }
+    public void visit(NegativoHoja n){
+	System.out.print("[Hoja signo -]");
     }
     public void visit(Nodo n){
 
