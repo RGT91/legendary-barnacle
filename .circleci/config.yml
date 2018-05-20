@@ -97,6 +97,19 @@ jobs:
       - run:
           working_directory: Proyectos/Proyecto_3
           command: mvn install
+  proyecto4:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          working_directory: Proyectos/Proyecto_4
+          command: mvn initialize
+      - run:
+          working_directory: Proyectos/Proyecto_4
+          command: mvn compile
+      - run:
+          working_directory: Proyectos/Proyecto_4
+          command: mvn install
 
 workflows:
   version: 2
