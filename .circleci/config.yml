@@ -129,3 +129,6 @@ workflows:
       - proyecto3:
           requires:
             - proyecto2
+      - proyecto4:
+          requires:
+            - proyecto3
