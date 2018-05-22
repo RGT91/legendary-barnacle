@@ -4,7 +4,14 @@ indice = 1
 not True
 31 <= 12 == 3 != 3 > 2
 True and False or False
-2 + 3 - 6 * 9 / 9
+2 + 3
+3 - 6
+6 * 9
+"34"*4
+9 / 9
+54 // 2.4
+5.3 % 2
+2 + 3 - 6 * 9 / 9 % 3.8 // 2
 while indice < 31:
    otro = True
    if indice % 3 == 0:

@@ -55,4 +55,6 @@ jobs:
         - cd Proyectos/Proyecto_4
         - mvn initialize
         - mvn compile
+        - mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/test.p"
+        - mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/fizzbuzz.p"
         - mvn install

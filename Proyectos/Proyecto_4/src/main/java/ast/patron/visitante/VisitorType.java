@@ -2,18 +2,41 @@ package ast.patron.visitante;
 import ast.patron.compuesto.*;
 import java.util.LinkedList;
 import java.util.Iterator;
+import adc.TablaSimbolo;
 
-public class VisitorPrint implements Visitor
+public class VisitorType implements Visitor
 {
+  protected int[][] addTabla = new int[][]{
+    { 0, 0, 0, 0, 0 },
+    { 0, 1, 2, 3, 4 },
+    { 0, 2, 2, 3, 4 },
+    { 0, 3, 3, 3, 3 },
+    { 0, 4, 4, 3, 4 }
+  };
+  protected int[][] difTabla = new int[][]{
+    { 0, 0, 0, 0, 0 },
+    { 0, 1, 2, 1, 0 },
+    { 0, 2, 2, 2, 0 },
+    { 0, 1, 2, 1, 0 },
+    { 0, 0, 0, 0, 0 }
+  };
+  protected int[][] mulTabla = new int[][]{
+    { 0, 0, 0, 0, 0 },
+    { 0, 1, 2, 1, 4 },
+    { 0, 2, 2, 2, 0 },
+    { 0, 1, 2, 1, 4 },
+    { 0, 4, 0, 4, 0 }
+  };
 
-    public void visit(AddNodo n){
-      System.out.println("[+ Tipo " + n.getType() + "]");
-      System.out.print("[");
-      n.getPrimerHijo().accept(this);
-      System.out.print("][");
-      n.getUltimoHijo().accept(this);
-      System.out.print("]");
-    }
+  public TablaSimbolo h = new TablaSimbolo();
+
+  public void visit(AddNodo n){
+    n.getPrimerHijo().accept(this);
+    n.getUltimoHijo().accept(this);
+    Nodo fChild =  n.getPrimerHijo();
+    Nodo lChild = n.getUltimoHijo();
+    n.setTipo(addTabla[fChild.getType()][lChild.getType()]);
+  }
     public void visit(AsigNodo n){
         System.out.println("[=]");
         System.out.print("[");
@@ -34,12 +57,11 @@ public class VisitorPrint implements Visitor
 
     }
     public void visit(DifNodo n){
-      System.out.println("[- Tipo " + n.getType() + "]");
-      System.out.print("[");
       n.getPrimerHijo().accept(this);
-      System.out.print("][");
       n.getUltimoHijo().accept(this);
-      System.out.print("]");
+      Nodo fChild =  n.getPrimerHijo();
+      Nodo lChild = n.getUltimoHijo();
+      n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
     }
     public void visit(CompNodo n){
         System.out.println("["+n.op+"]");
@@ -82,20 +104,18 @@ public class VisitorPrint implements Visitor
         System.out.print("]");
     }
     public void visit(MultNodo n){
-        System.out.println("[* Tipo " + n.getType() + "]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("][");
-        n.getUltimoHijo().accept(this);
-        System.out.print("]");
+      n.getPrimerHijo().accept(this);
+      n.getUltimoHijo().accept(this);
+      Nodo fChild =  n.getPrimerHijo();
+      Nodo lChild = n.getUltimoHijo();
+      n.setTipo(mulTabla[fChild.getType()][lChild.getType()]);
     }
     public void visit(DivNodo n){
-        System.out.println("[/ Tipo " + n.getType() + "]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("][");
-        n.getUltimoHijo().accept(this);
-        System.out.print("]");
+      n.getPrimerHijo().accept(this);
+      n.getUltimoHijo().accept(this);
+      Nodo fChild =  n.getPrimerHijo();
+      Nodo lChild = n.getUltimoHijo();
+      n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
     }
 
     public void visit(PotNodo n){
@@ -174,21 +194,19 @@ public class VisitorPrint implements Visitor
     }
 
     public void visit(ModNodo n){
-        System.out.println("[% Tipo " + n.getType() + "]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("][");
-        n.getUltimoHijo().accept(this);
-        System.out.print("]");
+      n.getPrimerHijo().accept(this);
+      n.getUltimoHijo().accept(this);
+      Nodo fChild =  n.getPrimerHijo();
+      Nodo lChild = n.getUltimoHijo();
+      n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
     }
 
     public void visit(DivENodo n){
-        System.out.println("[// Tipo " + n.getType() + "]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("][");
-        n.getUltimoHijo().accept(this);
-        System.out.print("]");
+      n.getPrimerHijo().accept(this);
+      n.getUltimoHijo().accept(this);
+      Nodo fChild =  n.getPrimerHijo();
+      Nodo lChild = n.getUltimoHijo();
+      n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
     }
     public void visit(AndNodo n){
         System.out.println("[&]");
@@ -216,25 +234,18 @@ public class VisitorPrint implements Visitor
 
     }
     public void visit(IdentifierHoja n){
-	System.out.print("[Hoja Identificador] id: "+ n.getNombre());
     }
     public void visit(IntHoja n){
-	System.out.print("[Hoja Entera Tipo " + n.getType() + "] valor: " + n.getValor().ival);
     }
     public void visit(BoolHoja n){
-	System.out.print("[Hoja Booleana Tipo " + n.getType() + "] valor: " + n.getValor().bval);
     }
     public void visit(CadenaHoja n){
-	System.out.print("[Hoja Cadena Tipo " + n.getType() + "] valor: " + n.getValor().sval);
     }
     public void visit(FloatHoja n){
-	System.out.print("[Hoja Real Tipo " + n.getType() + "] valor: " + n.getValor().dval);
     }
     public void visit(PositivoHoja n){
-	System.out.print("[Hoja signo +]");
     }
     public void visit(NegativoHoja n){
-	System.out.print("[Hoja signo -]");
     }
     public void visit(Nodo n){
 
