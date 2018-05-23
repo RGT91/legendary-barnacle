@@ -85,30 +85,17 @@ public class VisitorType implements Visitor
         System.out.print("]");
     }
     public void visit(WhileNodo n){
-        System.out.println("[while]");
-        System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("][:]\n[");
         n.getUltimoHijo().accept(this);
-        System.out.print("]");
     }
     public void visit(IfNodo n){
-        System.out.println("[if]");
-        System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("][:]\n[");
         n.getUltimoHijo().accept(this);
-        System.out.print("]");
     }
     public void visit(IfElseNodo n){
-      System.out.println("[if]");
-      System.out.print("[");
       n.getPrimerHijo().accept(this);
-      System.out.print("][:]\n[");
       n.getIntermedio().accept(this);
-      System.out.print("][else][:]\n[");
       n.getUltimoHijo().accept(this);
-      System.out.print("]");
     }
     public void visit(PrintNodo n){
         n.getPrimerHijo().accept(this);
