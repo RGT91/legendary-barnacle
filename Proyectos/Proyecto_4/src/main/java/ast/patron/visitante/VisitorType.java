@@ -111,10 +111,7 @@ public class VisitorType implements Visitor
       System.out.print("]");
     }
     public void visit(PrintNodo n){
-        System.out.println("[print]");
-        System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
     }
     public void visit(MultNodo n){
       n.getPrimerHijo().accept(this);
