@@ -15,7 +15,7 @@ public class VisitorPrint implements Visitor
       System.out.print("]");
     }
     public void visit(AsigNodo n){
-        System.out.println("[=]");
+        System.out.println("[= Tipo " + n.getType() + "]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
         System.out.print("]");
@@ -216,7 +216,7 @@ public class VisitorPrint implements Visitor
 
     }
     public void visit(IdentifierHoja n){
-	System.out.print("[Hoja Identificador] id: "+ n.getNombre());
+	System.out.print("[Hoja Identificador Tipo " + n.getType() + "] id: "+ n.getNombre());
     }
     public void visit(IntHoja n){
 	System.out.print("[Hoja Entera Tipo " + n.getType() + "] valor: " + n.getValor().ival);

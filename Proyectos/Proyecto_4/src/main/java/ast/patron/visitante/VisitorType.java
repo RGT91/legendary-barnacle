@@ -38,21 +38,26 @@ public class VisitorType implements Visitor
     n.setTipo(addTabla[fChild.getType()][lChild.getType()]);
   }
     public void visit(AsigNodo n){
-        System.out.println("[=]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
-        n.getUltimoHijo().accept(this);
-        System.out.println("]");
-
+      n.getPrimerHijo().accept(this);
+      n.getUltimoHijo().accept(this);
+      if(h.lookUp(n.getPrimerHijo().getNombre())==null){
+        n.getPrimerHijo().setTipo(n.getUltimoHijo().getType());
+        h.insert(n.getPrimerHijo().getNombre(), (IdentifierHoja)n.getPrimerHijo());
+        n.setTipo(n.getPrimerHijo().getType());
+      }else{
+        n.getPrimerHijo().setTipo(
+          h.lookUp(n.getPrimerHijo().getNombre()).getType()
+        );
+        if(n.getPrimerHijo().getType() != n.getUltimoHijo().getType()){
+          System.exit(1);
+        }
+        n.setTipo(n.getPrimerHijo().getType());
+      }
     }
     public void visit(Compuesto n){
         for (Iterator i = n.getHijos().iterator(); i.hasNext(); ) {
             Nodo hijo = (Nodo) i.next();
-            System.out.print("[");
             hijo.accept(this);
-            System.out.println("]");
         }
 
     }
@@ -234,6 +239,9 @@ public class VisitorType implements Visitor
 
     }
     public void visit(IdentifierHoja n){
+      if(h.lookUp(n.getNombre())!=null){
+        n.setTipo(h.lookUp(n.getNombre()).getType());
+      }
     }
     public void visit(IntHoja n){
     }

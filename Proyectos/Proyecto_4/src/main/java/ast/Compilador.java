@@ -43,6 +43,7 @@ public class Compilador{
                 c.typeAST();
                 System.out.println("Type AST");
                 c.imprimeAST();
+                System.out.println("Success");
             }catch(FileNotFoundException e){
                 System.err.println("El archivo " + archivo +" no fue encontrado. ");
             }catch(ArrayIndexOutOfBoundsException e){
