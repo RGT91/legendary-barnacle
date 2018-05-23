@@ -38,6 +38,10 @@ public class Hijos //extends AbstractCollection
 	return hijos.getLast();
     }
 
+    public Nodo getSegundo(){
+      return hijos.get(1);
+    }
+
     public void agregaHijoPrincipio(Nodo l){
 	hijos.addFirst(l);
     }

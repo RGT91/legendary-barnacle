@@ -9,17 +9,8 @@ public class NodoTernario extends Compuesto
 	this.agregaHijoFinal(r);
     }
 
-    public NodoTernario(Nodo l, Nodo c){
-	this.agregaHijoPrincipio(l);
-  this.agregaHijoFinal(c);
-    }
-
-    public NodoTernario(Nodo l){
-	this.agregaHijoPrincipio(l);
-    }
-
-    public NodoTernario(){
-	super();
+    public Nodo getIntermedio(){
+      return getHijos().getSegundo();
     }
 
     public void accept(Visitor v){

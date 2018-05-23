@@ -70,7 +70,7 @@ public class VisitorPrint implements Visitor
         System.out.print("[");
         n.getPrimerHijo().accept(this);
         System.out.print("][:]\n[");
-        n.getUltimoHijo().accept(this);
+        n.getIntermedio().accept(this);
         System.out.print("][else][:]\n[");
         n.getUltimoHijo().accept(this);
         System.out.print("]");

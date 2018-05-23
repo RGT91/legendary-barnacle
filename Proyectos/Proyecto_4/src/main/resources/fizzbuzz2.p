@@ -22,7 +22,7 @@ while indice < 31:
       print "buzz"
       otro = False
 
-   if otro:
+   else:
       print indice
 
    indice = indice + 1

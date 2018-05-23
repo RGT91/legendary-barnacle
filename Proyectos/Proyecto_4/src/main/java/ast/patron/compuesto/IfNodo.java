@@ -1,7 +1,7 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-public class IfNodo extends NodoTernario
+public class IfNodo extends NodoBinario
 {
 
     public IfNodo(Nodo l, Nodo r){
