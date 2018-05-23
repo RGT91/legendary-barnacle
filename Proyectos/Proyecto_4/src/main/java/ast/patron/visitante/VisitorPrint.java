@@ -99,53 +99,48 @@ public class VisitorPrint implements Visitor
         System.out.print("]");
     }
     public void visit(LTNodo n){
-        System.out.println("[<]");
+        System.out.println("[< Tipo " + n.getType() + "]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
+        System.out.print("][");
         n.getUltimoHijo().accept(this);
-        System.out.println("]");
+        System.out.print("]");
     }
 
     public void visit(GTNodo n){
-        System.out.println("[>]");
+        System.out.println("[> Tipo " + n.getType() + "]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
+        System.out.print("][");
         n.getUltimoHijo().accept(this);
-        System.out.println("]");
+        System.out.print("]");
     }
 
     public void visit(LENodo n){
-        System.out.println("[<=]");
+        System.out.println("[<= Tipo " + n.getType() + "]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
+        System.out.print("][");
         n.getUltimoHijo().accept(this);
-        System.out.println("]");
+        System.out.print("]");
     }
 
     public void visit(GENodo n){
-        System.out.println("[>=]");
+        System.out.println("[>= Tipo " + n.getType() + "]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
+        System.out.print("][");
         n.getUltimoHijo().accept(this);
-        System.out.println("]");
+        System.out.print("]");
     }
 
     public void visit(EqNodo n){
-        System.out.println("[==]");
+        System.out.println("[== Tipo " + n.getType() + "]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
+        System.out.print("][");
         n.getUltimoHijo().accept(this);
-        System.out.println("]");
+        System.out.print("]");
     }
     public void visit(FactorNodo n){
         System.out.println("[");
@@ -155,13 +150,12 @@ public class VisitorPrint implements Visitor
         System.out.print("]]");
     }
     public void visit(NEqNodo n){
-        System.out.println("[!=]");
+        System.out.println("[!= Tipo " + n.getType() + "]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
+        System.out.print("][");
         n.getUltimoHijo().accept(this);
-        System.out.println("]");
+        System.out.print("]");
     }
 
     public void visit(ModNodo n){
