@@ -230,10 +230,8 @@ public class VisitorType implements Visitor
         System.out.print("]");
     }
     public void visit(NotNodo n){
-        System.out.println("[¬]");
-        System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
+        n.setTipo(3);
     }
     public void visit(Hoja n){
 

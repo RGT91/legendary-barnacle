@@ -2,6 +2,7 @@
 algo = True
 indice = 1
 not True
+not "dde"
 31 <= 12 == 3 != 3 > 2
 True and False or False
 2 + 3
