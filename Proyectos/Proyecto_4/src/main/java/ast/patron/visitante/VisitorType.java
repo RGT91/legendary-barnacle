@@ -162,11 +162,9 @@ public class VisitorType implements Visitor
       n.setTipo(compTabla[fChild.getType()][lChild.getType()]);
     }
     public void visit(FactorNodo n){
-        System.out.println("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("[");
         n.getUltimoHijo().accept(this);
-        System.out.print("]]");
+        n.setTipo(n.getUltimoHijo().getType());
     }
     public void visit(NEqNodo n){
       n.getPrimerHijo().accept(this);
