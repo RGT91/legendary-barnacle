@@ -41,14 +41,6 @@ public class VisitorPrint implements Visitor
       n.getUltimoHijo().accept(this);
       System.out.print("]");
     }
-    public void visit(CompNodo n){
-        System.out.println("["+n.op+"]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("][");
-        n.getUltimoHijo().accept(this);
-        System.out.print("]");
-    }
     public void visit(WhileNodo n){
         System.out.println("[while]");
         System.out.print("[");
@@ -99,13 +91,12 @@ public class VisitorPrint implements Visitor
     }
 
     public void visit(PotNodo n){
-        System.out.println("[**]");
+        System.out.println("[** Tipo " + n.getType() + "]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
+        System.out.print("][");
         n.getUltimoHijo().accept(this);
-        System.out.println("]");
+        System.out.print("]");
     }
     public void visit(LTNodo n){
         System.out.println("[<]");

@@ -76,14 +76,6 @@ public class VisitorType implements Visitor
       Nodo lChild = n.getUltimoHijo();
       n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
     }
-    public void visit(CompNodo n){
-        System.out.println("["+n.op+"]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("][");
-        n.getUltimoHijo().accept(this);
-        System.out.print("]");
-    }
     public void visit(WhileNodo n){
         n.getPrimerHijo().accept(this);
         n.getUltimoHijo().accept(this);
@@ -116,13 +108,11 @@ public class VisitorType implements Visitor
     }
 
     public void visit(PotNodo n){
-        System.out.println("[**]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
-        n.getUltimoHijo().accept(this);
-        System.out.println("]");
+      n.getPrimerHijo().accept(this);
+      n.getUltimoHijo().accept(this);
+      Nodo fChild =  n.getPrimerHijo();
+      Nodo lChild = n.getUltimoHijo();
+      n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
     }
     public void visit(LTNodo n){
         System.out.println("[<]");
