@@ -51,7 +51,13 @@ public class VisitorType implements Visitor
     n.getUltimoHijo().accept(this);
     Nodo fChild =  n.getPrimerHijo();
     Nodo lChild = n.getUltimoHijo();
-    n.setTipo(addTabla[fChild.getType()][lChild.getType()]);
+    int type=addTabla[fChild.getType()][lChild.getType()];
+    if(type!=0){
+      n.setTipo(addTabla[fChild.getType()][lChild.getType()]);
+    }else{
+      System.out.println("Error de tipos");
+      System.exit(0);
+    }
   }
     public void visit(AsigNodo n){
       n.getPrimerHijo().accept(this);
