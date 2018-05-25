@@ -53,7 +53,7 @@ public class VisitorType implements Visitor
     Nodo lChild = n.getUltimoHijo();
     int type=addTabla[fChild.getType()][lChild.getType()];
     if(type!=0){
-      n.setTipo(addTabla[fChild.getType()][lChild.getType()]);
+      n.setTipo(type);
     }else{
       System.out.println("Error de tipos");
       System.exit(0);
@@ -88,7 +88,13 @@ public class VisitorType implements Visitor
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
+      int type=difTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
     public void visit(WhileNodo n){
         n.getPrimerHijo().accept(this);
@@ -111,14 +117,26 @@ public class VisitorType implements Visitor
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(mulTabla[fChild.getType()][lChild.getType()]);
+      int type=mulTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
     public void visit(DivNodo n){
       n.getPrimerHijo().accept(this);
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
+      int type=difTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
 
     public void visit(PotNodo n){
@@ -126,14 +144,26 @@ public class VisitorType implements Visitor
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
+      int type=difTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
     public void visit(LTNodo n){
       n.getPrimerHijo().accept(this);
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(compTabla[fChild.getType()][lChild.getType()]);
+      int type=compTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
 
     public void visit(GTNodo n){
@@ -141,7 +171,13 @@ public class VisitorType implements Visitor
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(compTabla[fChild.getType()][lChild.getType()]);
+      int type=compTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
 
     public void visit(LENodo n){
@@ -149,7 +185,13 @@ public class VisitorType implements Visitor
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(compTabla[fChild.getType()][lChild.getType()]);
+      int type=compTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
 
     public void visit(GENodo n){
@@ -157,7 +199,13 @@ public class VisitorType implements Visitor
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(compTabla[fChild.getType()][lChild.getType()]);
+      int type=compTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
 
     public void visit(EqNodo n){
@@ -165,7 +213,13 @@ public class VisitorType implements Visitor
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(compTabla[fChild.getType()][lChild.getType()]);
+      int type=compTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
     public void visit(FactorNodo n){
         n.getPrimerHijo().accept(this);
@@ -177,7 +231,13 @@ public class VisitorType implements Visitor
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(compTabla[fChild.getType()][lChild.getType()]);
+      int type=compTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
 
     public void visit(ModNodo n){
@@ -185,7 +245,13 @@ public class VisitorType implements Visitor
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
+      int type=difTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
 
     public void visit(DivENodo n){
@@ -193,21 +259,39 @@ public class VisitorType implements Visitor
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(difTabla[fChild.getType()][lChild.getType()]);
+      int type=difTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
     public void visit(AndNodo n){
       n.getPrimerHijo().accept(this);
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(orTabla[fChild.getType()][lChild.getType()]);
+      int type=orTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
     public void visit(OrNodo n){
       n.getPrimerHijo().accept(this);
       n.getUltimoHijo().accept(this);
       Nodo fChild =  n.getPrimerHijo();
       Nodo lChild = n.getUltimoHijo();
-      n.setTipo(orTabla[fChild.getType()][lChild.getType()]);
+      int type=orTabla[fChild.getType()][lChild.getType()];
+      if(type!=0){
+        n.setTipo(type);
+      }else{
+        System.out.println("Error de tipos");
+        System.exit(0);
+      }
     }
     public void visit(NotNodo n){
         n.getPrimerHijo().accept(this);
