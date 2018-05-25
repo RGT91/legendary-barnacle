@@ -97,6 +97,28 @@ jobs:
       - run:
           working_directory: Proyectos/Proyecto_3
           command: mvn install
+  proyecto4:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          working_directory: Proyectos/Proyecto_4
+          command: mvn initialize
+      - run:
+          working_directory: Proyectos/Proyecto_4
+          command: mvn compile
+      - run:
+          working_directory: Proyectos/Proyecto_4
+          command: mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/fizzbuzz.p"
+      - run:
+          working_directory: Proyectos/Proyecto_4
+          command: mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/fizzbuzz2.p"
+      - run:
+          working_directory: Proyectos/Proyecto_4
+          command: mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/test.p"
+      - run:
+          working_directory: Proyectos/Proyecto_4
+          command: mvn install
 
 workflows:
   version: 2
@@ -116,3 +138,6 @@ workflows:
       - proyecto3:
           requires:
             - proyecto2
+      - proyecto4:
+          requires:
+            - proyecto3
