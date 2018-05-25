@@ -112,6 +112,9 @@ jobs:
           command: mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/fizzbuzz.p"
       - run:
           working_directory: Proyectos/Proyecto_4
+          command: mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/fizzbuzz2.p"
+      - run:
+          working_directory: Proyectos/Proyecto_4
           command: mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/test.p"
       - run:
           working_directory: Proyectos/Proyecto_4

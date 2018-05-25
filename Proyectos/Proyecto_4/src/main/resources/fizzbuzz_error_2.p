@@ -1,5 +1,6 @@
 # FizzBuzz
 indice = 1
+not otro
 while indice < 31:
    if indice % 3 == 0:
       print "fizz"

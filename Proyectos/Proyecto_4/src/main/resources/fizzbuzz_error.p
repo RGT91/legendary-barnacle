@@ -7,7 +7,7 @@ while indice < 31:
    if indice %5 == 0:
       print "buzz"
 
-   else :
+   if otro :
       print indice
 
    indice = indice + 1

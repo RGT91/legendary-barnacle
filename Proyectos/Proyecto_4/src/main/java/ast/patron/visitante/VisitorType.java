@@ -55,8 +55,8 @@ public class VisitorType implements Visitor
     if(type!=0){
       n.setTipo(type);
     }else{
-      System.out.println("Error de tipos");
-      System.exit(0);
+      System.out.println("ERROR: de tipos");
+      System.exit(1);
     }
   }
     public void visit(AsigNodo n){
@@ -92,20 +92,32 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
     public void visit(WhileNodo n){
         n.getPrimerHijo().accept(this);
+        if(n.getPrimerHijo().getType()!= 3){
+          System.out.println("condición no es booleana");
+          System.exit(1);
+        }
         n.getUltimoHijo().accept(this);
     }
     public void visit(IfNodo n){
         n.getPrimerHijo().accept(this);
+        if(n.getPrimerHijo().getType()!= 3){
+          System.out.println("condición no es booleana");
+          System.exit(1);
+        }
         n.getUltimoHijo().accept(this);
     }
     public void visit(IfElseNodo n){
       n.getPrimerHijo().accept(this);
+      if(n.getPrimerHijo().getType()!= 3){
+        System.out.println("condición no es booleana");
+        System.exit(1);
+      }
       n.getIntermedio().accept(this);
       n.getUltimoHijo().accept(this);
     }
@@ -121,8 +133,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
     public void visit(DivNodo n){
@@ -134,8 +146,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
 
@@ -148,8 +160,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
     public void visit(LTNodo n){
@@ -161,8 +173,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
 
@@ -175,8 +187,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
 
@@ -189,8 +201,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
 
@@ -203,8 +215,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
 
@@ -217,8 +229,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
     public void visit(FactorNodo n){
@@ -235,8 +247,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
 
@@ -249,8 +261,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
 
@@ -263,8 +275,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
     public void visit(AndNodo n){
@@ -276,8 +288,8 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
     public void visit(OrNodo n){
@@ -289,13 +301,18 @@ public class VisitorType implements Visitor
       if(type!=0){
         n.setTipo(type);
       }else{
-        System.out.println("Error de tipos");
-        System.exit(0);
+        System.out.println("ERROR: de tipos");
+        System.exit(1);
       }
     }
     public void visit(NotNodo n){
         n.getPrimerHijo().accept(this);
-        n.setTipo(3);
+        if(n.getPrimerHijo().getType()!=0){
+          n.setTipo(3);
+        }else{
+          System.out.println("ERROR: Tipo no valido para negación");
+          System.exit(1);
+        }
     }
     public void visit(Hoja n){
 

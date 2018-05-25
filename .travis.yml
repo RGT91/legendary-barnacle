@@ -57,4 +57,5 @@ jobs:
         - mvn compile
         - mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/test.p"
         - mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/fizzbuzz.p"
+        - mvn exec:java -Dexec.mainClass="ast.Compilador" -Dexec.args="src/main/resources/fizzbuzz2.p"
         - mvn install
