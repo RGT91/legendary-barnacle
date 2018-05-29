@@ -87,8 +87,28 @@ public class VisitorGenerator implements Visitor
       n.getPrimerHijo().accept(this);
     }
     public void visit(MultNodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+      Nodo hd = n.getUltimoHijo();
+
+      // Tipo de registro objetivo
+      int tipo = n.getType();
+      boolean entero =  tipo==2 ? false : true;
+
+      int objetivo = reg.getObjetivo(entero);
+      String[] siguientes = reg.getNsiguientes(2,entero);
+
+      // Genero el código del subárbol izquiero
+      reg.setObjetivo(siguientes[0],entero);
+      hi.accept(this);
+
+      // Genero el código del subárbol derecho
+      reg.setObjetivo(siguientes[1], entero);
+      hd.accept(this);
+
+      String opcode =  tipo==2 ? "mul.s" : "mul";
+
+      System.out.println(opcode + " " + objetivo + ", " +
+                          siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(DivNodo n){
       n.getPrimerHijo().accept(this);
