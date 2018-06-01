@@ -135,8 +135,8 @@ public class VisitorGenerator implements Visitor
                           siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(PotNodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+      Nodo hd = n.getUltimoHijo();
       
       // Tipo de registro objetivo
         int tipo = n.getType();
