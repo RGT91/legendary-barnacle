@@ -159,48 +159,248 @@ public class VisitorGenerator implements Visitor
                             siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(LTNodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+        Nodo hd = n.getUltimoHijo();
+
+        // Tipo de registro objetivo
+        int tipo = n.getType();
+        boolean entero =  tipo==2 ? false : true;
+
+        int objetivo = reg.getObjetivo(entero);
+        String[] siguientes = reg.getNsiguientes(2,entero);
+
+        // Genero el código del subárbol izquiero
+        reg.setObjetivo(siguientes[0],entero);
+        hi.accept(this);
+
+        // Genero el código del subárbol derecho
+        reg.setObjetivo(siguientes[1], entero);
+        hd.accept(this);
+
+        String opcode =  tipo==2 ? "less.s" : "less";
+
+        System.out.println(opcode + " " + objetivo + ", " +
+                            siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(GTNodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+        Nodo hd = n.getUltimoHijo();
+
+        // Tipo de registro objetivo
+        int tipo = n.getType();
+        boolean entero =  tipo==2 ? false : true;
+
+        int objetivo = reg.getObjetivo(entero);
+        String[] siguientes = reg.getNsiguientes(2,entero);
+
+        // Genero el código del subárbol izquiero
+        reg.setObjetivo(siguientes[0],entero);
+        hi.accept(this);
+
+        // Genero el código del subárbol derecho
+        reg.setObjetivo(siguientes[1], entero);
+        hd.accept(this);
+
+        String opcode =  tipo==2 ? "great.s" : "great";
+
+        System.out.println(opcode + " " + objetivo + ", " +
+                            siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(LENodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+        Nodo hd = n.getUltimoHijo();
+
+        // Tipo de registro objetivo
+        int tipo = n.getType();
+        boolean entero =  tipo==2 ? false : true;
+
+        int objetivo = reg.getObjetivo(entero);
+        String[] siguientes = reg.getNsiguientes(2,entero);
+
+        // Genero el código del subárbol izquiero
+        reg.setObjetivo(siguientes[0],entero);
+        hi.accept(this);
+
+        // Genero el código del subárbol derecho
+        reg.setObjetivo(siguientes[1], entero);
+        hd.accept(this);
+
+        String opcode =  tipo==2 ? "lessE.s" : "lessE";
+
+        System.out.println(opcode + " " + objetivo + ", " +
+                            siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(GENodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+        Nodo hd = n.getUltimoHijo();
+
+        // Tipo de registro objetivo
+        int tipo = n.getType();
+        boolean entero =  tipo==2 ? false : true;
+
+        int objetivo = reg.getObjetivo(entero);
+        String[] siguientes = reg.getNsiguientes(2,entero);
+
+        // Genero el código del subárbol izquiero
+        reg.setObjetivo(siguientes[0],entero);
+        hi.accept(this);
+
+        // Genero el código del subárbol derecho
+        reg.setObjetivo(siguientes[1], entero);
+        hd.accept(this);
+
+        String opcode =  tipo==2 ? "greatE.s" : "greatE";
+
+        System.out.println(opcode + " " + objetivo + ", " +
+                            siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(EqNodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+        Nodo hd = n.getUltimoHijo();
+
+        // Tipo de registro objetivo
+        int tipo = n.getType();
+        boolean entero =  tipo==2 ? false : true;
+
+        int objetivo = reg.getObjetivo(entero);
+        String[] siguientes = reg.getNsiguientes(2,entero);
+
+        // Genero el código del subárbol izquiero
+        reg.setObjetivo(siguientes[0],entero);
+        hi.accept(this);
+
+        // Genero el código del subárbol derecho
+        reg.setObjetivo(siguientes[1], entero);
+        hd.accept(this);
+
+        String opcode =  tipo==2 ? "eq.s" : "eq";
+
+        System.out.println(opcode + " " + objetivo + ", " +
+                            siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(FactorNodo n){
       n.getPrimerHijo().accept(this);
       n.getUltimoHijo().accept(this);
     }
     public void visit(NEqNodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+        Nodo hd = n.getUltimoHijo();
+
+        // Tipo de registro objetivo
+        int tipo = n.getType();
+        boolean entero =  tipo==2 ? false : true;
+
+        int objetivo = reg.getObjetivo(entero);
+        String[] siguientes = reg.getNsiguientes(2,entero);
+
+        // Genero el código del subárbol izquiero
+        reg.setObjetivo(siguientes[0],entero);
+        hi.accept(this);
+
+        // Genero el código del subárbol derecho
+        reg.setObjetivo(siguientes[1], entero);
+        hd.accept(this);
+
+        String opcode =  tipo==2 ? "notEq.s" : "notEq";
+
+        System.out.println(opcode + " " + objetivo + ", " +
+                            siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(ModNodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+        Nodo hd = n.getUltimoHijo();
+
+        // Tipo de registro objetivo
+        int tipo = n.getType();
+        boolean entero =  tipo==2 ? false : true;
+
+        int objetivo = reg.getObjetivo(entero);
+        String[] siguientes = reg.getNsiguientes(2,entero);
+
+        // Genero el código del subárbol izquiero
+        reg.setObjetivo(siguientes[0],entero);
+        hi.accept(this);
+
+        // Genero el código del subárbol derecho
+        reg.setObjetivo(siguientes[1], entero);
+        hd.accept(this);
+
+        String opcode =  tipo==2 ? "mod.s" : "mod";
+
+        System.out.println(opcode + " " + objetivo + ", " +
+                            siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(DivENodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+        Nodo hd = n.getUltimoHijo();
+
+        // Tipo de registro objetivo
+        int tipo = n.getType();
+        boolean entero =  tipo==2 ? false : true;
+
+        int objetivo = reg.getObjetivo(entero);
+        String[] siguientes = reg.getNsiguientes(2,entero);
+
+        // Genero el código del subárbol izquiero
+        reg.setObjetivo(siguientes[0],entero);
+        hi.accept(this);
+
+        // Genero el código del subárbol derecho
+        reg.setObjetivo(siguientes[1], entero);
+        hd.accept(this);
+
+        String opcode =  tipo==2 ? "divE.s" : "divE";
+
+        System.out.println(opcode + " " + objetivo + ", " +
+                            siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(AndNodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+        Nodo hd = n.getUltimoHijo();
+
+        // Tipo de registro objetivo
+        int tipo = n.getType();
+        boolean entero =  tipo==2 ? false : true;
+
+        int objetivo = reg.getObjetivo(entero);
+        String[] siguientes = reg.getNsiguientes(2,entero);
+
+        // Genero el código del subárbol izquiero
+        reg.setObjetivo(siguientes[0],entero);
+        hi.accept(this);
+
+        // Genero el código del subárbol derecho
+        reg.setObjetivo(siguientes[1], entero);
+        hd.accept(this);
+
+        String opcode =  tipo==2 ? "and.s" : "and";
+
+        System.out.println(opcode + " " + objetivo + ", " +
+                            siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(OrNodo n){
-      n.getPrimerHijo().accept(this);
-      n.getUltimoHijo().accept(this);
+      Nodo hi = n.getPrimerHijo();
+        Nodo hd = n.getUltimoHijo();
+
+        // Tipo de registro objetivo
+        int tipo = n.getType();
+        boolean entero =  tipo==2 ? false : true;
+
+        int objetivo = reg.getObjetivo(entero);
+        String[] siguientes = reg.getNsiguientes(2,entero);
+
+        // Genero el código del subárbol izquiero
+        reg.setObjetivo(siguientes[0],entero);
+        hi.accept(this);
+
+        // Genero el código del subárbol derecho
+        reg.setObjetivo(siguientes[1], entero);
+        hd.accept(this);
+
+        String opcode =  tipo==2 ? "or.s" : "or";
+
+        System.out.println(opcode + " " + objetivo + ", " +
+                            siguientes[0] + ", " + siguientes[1]);
     }
     public void visit(NotNodo n){
       n.getPrimerHijo().accept(this);
