@@ -164,6 +164,6 @@ workflows:
       - proyecto4:
           requires:
             - proyecto3
-      - Proyecto5:
+      - proyecto5:
           requires:
             - proyecto4
