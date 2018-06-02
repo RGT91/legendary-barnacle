@@ -39,7 +39,7 @@ public class VisitorGenerator implements Visitor
     public void visit(AsigNodo n){
       Nodo hi = n.getPrimerHijo();
         Nodo hd = n.getUltimoHijo();
-        System.out.println(hi+":    .word "+ hd);
+        System.out.println(hi.getNombre()+":    .word "+ hd.getValor());
 
         // Tipo de registro objetivo
         int tipo = n.getType();
@@ -59,7 +59,7 @@ public class VisitorGenerator implements Visitor
         String opcode =  tipo==2 ? "lw.s" : "lw";
 
         System.out.println(opcode + " " + objetivo + ", " +
-                            siguientes[0] + ", " + hi);
+                            siguientes[0] + ", " + hi.getNombre());
     }
     public void visit(Compuesto n){
       for (Iterator i = n.getHijos().iterator(); i.hasNext(); ) {
